@@ -8,7 +8,7 @@
 /* Zoom só para telas grandes (desktop) */
 @media (min-width: 1200px) {
     body {
-        zoom: 1.25; /* 125% */
+        zoom: 1; /* 1.25% */
     }
 }
 

@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sabiá: Transformando Dados em Saúde para Todos</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="logo/sabia_correto.webp" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+    <img src="logo/sabia_correto.webp" alt="Sabiá" style="height: 75px;"></a>
+
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="#" class="nav-item nav-link">Home</a>
+                <a href="#about" class="nav-item nav-link">Sobre</a>
+                <a href="#metrics" class="nav-item nav-link">Impacto</a>
+                <a href="#news" class="nav-item nav-link">Notícias</a>
+                <a href="#team" class="nav-item nav-link">Equipe</a>
+                <!--<a href="#test" class="nav-item nav-link">Testemunhos</a>-->
+                <!--<div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">InteliGente</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="https://inteligentehub.com.br/" class="dropdown-item">Site Oficial</a>
+                        <a href="https://inteligentehub.com.br/news.html" class="dropdown-item">Notícias e Impacto</a>
+                        <a href="https://www.instagram.com/inteligente_utfpr/" class="dropdown-item">Instagram</a>
+                        <a href="https://inteligentehub.com.br/maps.html" class="dropdown-item">Mapa de Acessos</a>
+                    </div>
+                </div>-->
+                <a href="#faq" class="nav-item nav-link">FAQ</a>
+                <a href="#contato" class="nav-item nav-link">Contato</a>
+            </div>
+            <a href="#contato" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Quero Saber Mais<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5">
+      <div class="owl-carousel header-carousel position-relative">
+
+        <div class="owl-carousel-item position-relative">
+          <img class="img-fluid" src="img-new/15.png" alt="">
+          <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+               style="background: rgba(24, 29, 56, .7);">
+            <div class="container">
+              <div class="row justify-content-start">
+                <div class="col-sm-10 col-lg-8">
+                  <h5 class="text-primary text-uppercase mb-3 animated slideInDown">
+                    Saúde Avançada com Big Data e IA
+                  </h5>
+                  <h1 class="display-3 text-white animated slideInDown">
+                    Transformando Dados em Saúde para Todos
+                  </h1>
+                  <p class="fs-5 text-white mb-4 pb-2">
+                    O Projeto <strong>Sabiá</strong> visa construir uma infraestrutura segura e interoperável para armazenar grandes volumes de dados públicos de saúde do Paraná, permitindo análises preditivas, vigilância epidemiológica, redução de desigualdades e decisões baseadas em evidências, em conformidade com a LGPD.
+                  </p>
+                  <a href="#about" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">
+                    Saiba Mais
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Carousel End -->
+
+    <!-- Carousel End -->
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+            
+                <!-- Integração de Dados -->
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                  <div class="service-item text-center pt-3">
+                    <div class="p-4">
+                      <i class="fa fa-3x fa-database text-primary mb-4"></i>
+                      <h5 class="mb-3">Integração de Dados em Saúde</h5>
+                      <p>
+                        Centralizamos dados clínicos, epidemiológicos, genômicos e socioeconômicos do Paraná em um Data Lake seguro e interoperável.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Governança e LGPD -->
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="service-item text-center pt-3">
+                    <div class="p-4">
+                      <i class="fa fa-3x fa-shield-alt text-primary mb-4"></i>
+                      <h5 class="mb-3">Governança e Proteção de Dados</h5>
+                      <p>
+                        O projeto adota políticas rigorosas de governança, segurança e privacidade, garantindo conformidade com a LGPD e uso responsável dos dados para pesquisa, gestão e políticas públicas.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Inteligência Analítica -->
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                  <div class="service-item text-center pt-3">
+                    <div class="p-4">
+                      <i class="fa fa-3x fa-brain text-primary mb-4"></i>
+                      <h5 class="mb-3">Inteligência Analítica e IA</h5>
+                      <p>
+                        O Sabiá promove a aplicação de ciência de dados e Inteligência Artificial para análises preditivas, vigilância epidemiológica e identificação de padrões ocultos, apoiando decisões rápidas e baseadas em evidências.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Decisão e Impacto -->
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                  <div class="service-item text-center pt-3">
+                    <div class="p-4">
+                      <i class="fa fa-3x fa-chart-line text-primary mb-4"></i>
+                      <h5 class="mb-3">Decisão Pública com Evidências</h5>
+                      <p>
+                        Visamos transformar grandes volumes de dados em indicadores claros, fortalecendo a gestão da saúde e a formulação de políticas públicas mais eficientes e equitativas.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+    <!-- About Start -->
+    <div id="about" class="container-xxl py-5">
+      <div class="container">
+        <div class="row g-5">
+
+          <!-- Imagem / Logo -->
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+            <div class="position-relative h-100">
+              <img class="img-fluid position-absolute w-100 h-100"
+                   src="logo/sabia_correto.webp"
+                   alt="Projeto Sabiá – Saúde Avançada com Big Data e IA"
+                   style="object-fit: contain; max-height: 100%">
+            </div>
+          </div>
+
+          <!-- Texto -->
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+            <h6 class="section-title bg-white text-start text-primary pe-3">Sobre o Projeto</h6>
+
+            <h1 class="mb-4">
+              Sabiá: Saúde Avançada com Big Data e Inteligência Artificial
+            </h1>
+
+            <p class="mb-4">
+              O <strong>Projeto Sabiá</strong> nasce para enfrentar um dos maiores desafios da saúde pública brasileira: a fragmentação e o subuso dos dados.
+              A iniciativa constrói um <strong>Data Lake em Saúde</strong> capaz de integrar, organizar e proteger grandes volumes de dados públicos,
+              criando uma base sólida para análises avançadas e decisões baseadas em evidências.
+            </p>
+
+            <p class="mb-4">
+              Ao unificar dados clínicos, epidemiológicos, genômicos e socioeconômicos,
+              o Sabiá viabiliza o uso estratégico de ciência de dados e Inteligência Artificial para vigilância epidemiológica, medicina de precisão,
+              redução de desigualdades e fortalecimento das políticas públicas de saúde,
+              sempre em conformidade com a <strong>LGPD</strong>.
+            </p>
+
+            <!-- Destaques -->
+            <div class="row gy-2 gx-4 mb-4">
+              <div class="col-sm-6">
+                <p class="mb-0">
+                  <i class="fa fa-arrow-right text-primary me-2"></i>
+                  Integração de Dados em Saúde
+                </p>
+              </div>
+              <div class="col-sm-6">
+                <p class="mb-0">
+                  <i class="fa fa-arrow-right text-primary me-2"></i>
+                  Data Lake Seguro e Interoperável
+                </p>
+              </div>
+              <div class="col-sm-6">
+                <p class="mb-0">
+                  <i class="fa fa-arrow-right text-primary me-2"></i>
+                  Governança e LGPD
+                </p>
+              </div>
+              <div class="col-sm-6">
+                <p class="mb-0">
+                  <i class="fa fa-arrow-right text-primary me-2"></i>
+                  Inteligência Artificial Aplicada
+                </p>
+              </div>
+              <div class="col-sm-6">
+                <p class="mb-0">
+                  <i class="fa fa-arrow-right text-primary me-2"></i>
+                  Vigilância e Análise Preditiva
+                </p>
+              </div>
+              <div class="col-sm-6">
+                <p class="mb-0">
+                  <i class="fa fa-arrow-right text-primary me-2"></i>
+                  Decisão Pública Baseada em Evidências
+                </p>
+              </div>
+            </div>
+
+            <a class="btn btn-primary py-3 px-5 mt-2" href="#contato">
+              Saiba Mais
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Categories Start
+    <div class="container-xxl py-5 category">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Categories</h6>
+                <h1 class="mb-5">Courses Categories</h1>
+            </div>
+            <div class="row g-3">
+                <div class="col-lg-7 col-md-6">
+                    <div class="row g-3">
+                        <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
+                            <a class="position-relative d-block overflow-hidden" href="">
+                                <img class="img-fluid" src="img/cat-1.jpg" alt="">
+                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
+                                    <h5 class="m-0">Web Design</h5>
+                                    <small class="text-primary">49 Courses</small>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
+                            <a class="position-relative d-block overflow-hidden" href="">
+                                <img class="img-fluid" src="img/cat-2.jpg" alt="">
+                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
+                                    <h5 class="m-0">Graphic Design</h5>
+                                    <small class="text-primary">49 Courses</small>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
+                            <a class="position-relative d-block overflow-hidden" href="">
+                                <img class="img-fluid" src="img/cat-3.jpg" alt="">
+                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
+                                    <h5 class="m-0">Video Editing</h5>
+                                    <small class="text-primary">49 Courses</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
+                    <a class="position-relative d-block h-100 overflow-hidden" href="">
+                        <img class="img-fluid position-absolute w-100 h-100" src="img/cat-4.jpg" alt="" style="object-fit: cover;">
+                        <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin:  1px;">
+                            <h5 class="m-0">Online Marketing</h5>
+                            <small class="text-primary">49 Courses</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Categories Start -->
+
+    <!-- Metrics Start -->
+    <div id="metrics" class="container-xxl py-5">
+      <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+          <h6 class="section-title bg-white text-center text-primary px-3">Primeiros Marcos do Projeto</h6>
+          <h1 class="mb-5">O que Vamos Construir com o Sabiá</h1>
+        </div>
+
+        <div class="row g-4">
+
+          <!-- Mapeamento de Dados -->
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="metric-item bg-light text-center py-4">
+              <div class="d-flex justify-content-center mb-3">
+                <i class="fa fa-search fa-3x text-primary"></i>
+              </div>
+              <h3 class="mb-3">Mapeamento das Fontes</h3>
+              <p class="mb-0">
+                Identificar, documentar e padronizar todas as bases de saúde do município de Guarapuava.
+              </p>
+            </div>
+          </div>
+
+          <!-- Infraestrutura do Data Lake -->
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="metric-item bg-light text-center py-4">
+              <div class="d-flex justify-content-center mb-3">
+                <i class="fa fa-server fa-3x text-primary"></i>
+              </div>
+              <h3 class="mb-3">Infraestrutura Inicial</h3>
+              <p class="mb-0">
+                Implantar um ambiente com zonas Bronze, Silver e Gold, garantindo segurança, redundância e governança.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pipelines e Conectores -->
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="metric-item bg-light text-center py-4">
+              <div class="d-flex justify-content-center mb-3">
+                <i class="fa fa-exchange-alt fa-3x text-primary"></i>
+              </div>
+              <h3 class="mb-3">Pipelines e Conectores</h3>
+              <p class="mb-0">
+                Criar os primeiros pipelines automáticos para ingestão contínua de dados do sistemas municipais.
+              </p>
+            </div>
+          </div>
+
+          <!-- Governança e LGPD -->
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+            <div class="metric-item bg-light text-center py-4">
+              <div class="d-flex justify-content-center mb-3">
+                <i class="fa fa-shield-alt fa-3x text-primary"></i>
+              </div>
+              <h3 class="mb-3">Governança e LGPD</h3>
+              <p class="mb-0">
+                Estabelecer políticas de segurança, anonimização, acesso, auditoria e conformidade com a LGPD para todos os dados.
+              </p>
+            </div>
+          </div>
+
+          <!-- Primeiro Dashboard -->
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.9s">
+            <div class="metric-item bg-light text-center py-4">
+              <div class="d-flex justify-content-center mb-3">
+                <i class="fa fa-chart-line fa-3x text-primary"></i>
+              </div>
+              <h3 class="mb-3">Primeiros Dashboards</h3>
+              <p class="mb-0">
+                Desenvolver visualizações iniciais para apoiar a tomada de decisão em vigilância epidemiológica e gestão municipal.
+              </p>
+            </div>
+          </div>
+
+          <!-- Base para IA e Preditividade -->
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="1.1s">
+            <div class="metric-item bg-light text-center py-4">
+              <div class="d-flex justify-content-center mb-3">
+                <i class="fa fa-brain fa-3x text-primary"></i>
+              </div>
+              <h3 class="mb-3">Fundação para IA</h3>
+              <p class="mb-0">
+                Preparar a estrutura necessária para modelos preditivos, análises avançadas e futuras soluções de IA em saúde pública.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- Metrics End -->
+
+    <style>
+        .news-img-wrapper {
+            width: 100%;
+            height: 220px; /* altura fixa ajustável */
+            overflow: hidden;
+        }
+
+        .news-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* mantém proporção e corta o excesso */
+            object-position: center; /* centraliza a imagem */
+            display: block;
+        }
+    </style>
+
+    <!-- News Start -->
+    <div id="news" class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-12">
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <h6 class="section-title bg-white text-center text-primary px-3">Notícias</h6>
+                        <h1 class="mb-5">Acompanhe o Sabiá</h1>
+                    </div>
+
+                    <!-- Lista de notícias -->
+                    <div class="row g-4" id="newsList">
+
+                        <div class="col-lg-4 col-md-6 news-item">
+                            <div class="blog-item bg-light rounded overflow-hidden h-100">
+                                <div class="news-img-wrapper">
+                                    <img src="img-new/20.png" class="news-img" alt="Roda de escuta com educadores">
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="mb-3">Parceria com o Hub AutoAI</h4>
+                                    <p class="mb-3">
+                                    O Sabiá é parceiro do hub AutoAI-Pandemics, iniciativa internacional financiada pela AI4PEP e desenvolvida em parceria com 16 países do Sul Global. AutoAI visa democratizar soluções de IA para não especialistas.
+                                    </p>
+                                    <a href="https://autoaipandemics.icmc.usp.br/" class="text-primary fw-semibold">AutoAI - Ver mais</a>
+                                    </br>
+                                    <a href="https://ai4pep.org/" class="text-primary fw-semibold">AI4PEP - Ver mais</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 news-item">
+                            <div class="blog-item bg-light rounded overflow-hidden h-100">
+                                <div class="news-img-wrapper">
+                                    <img src="img-new/18.png" class="news-img" alt="Roda de escuta com educadores">
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="mb-3">Conheça o Projeto InteliGente</h4>
+                                    <p class="mb-3">
+                                    Reconhecido com mais de 40 prêmios nacionais e internacionais, o InteliGente visa democratizar o acesso à IA por meio da educação social e apoia o Sabiá na formação ética, inclusão digital e capacitação.
+                                    </p>
+                                    <a href="https://inteligentehub.com.br/" class="text-primary fw-semibold">InteliGente - Ver mais</a>
+                                    </br>
+                                    <a href="https://inteligentehub.com.br/news.html" class="text-primary fw-semibold">Notícias - Ler mais</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Paginação -->
+                    <nav aria-label="Paginação de notícias" class="mt-4">
+                        <ul class="pagination justify-content-center" id="newsPagination"></ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- News End -->
+
+
+    <!-- Equipe Início -->
+    <div id="team" class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Nossa Equipe</h6>
+                <h1 class="mb-5">Quem Constrói o Japiim Digital</h1>
+            </div>
+            <div class="row g-4">
+                <div class="owl-carousel team-carousel">
+                    <div class="team-item bg-light">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="img-new/bonidia.jpeg" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                <a class="btn btn-sm-square btn-primary mx-1" href="https://www.linkedin.com/in/robson-parmezan-bonidia-phd-8b1b8890"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href="https://www.instagram.com/inteligente_utfpr/"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href="https://youtube.com/@InteliGente-AI"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">Robson Bonidia</h5>
+                            <small>PI – Pesquisador</small>
+                        </div>
+                    </div>
+
+                    <div class="team-item bg-light">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="img-new/6.png" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                <a class="btn btn-sm-square btn-primary mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">Nome</h5>
+                            <small>Cargo</small>
+                        </div>
+                    </div>
+
+                    <div class="team-item bg-light">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="img-new/6.png" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                <a class="btn btn-sm-square btn-primary mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">Nome</h5>
+                            <small>Cargo</small>
+                        </div>
+                    </div>
+
+                    <div class="team-item bg-light">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="img-new/6.png" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                <a class="btn btn-sm-square btn-primary mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">Nome</h5>
+                            <small>Cargo</small>
+                        </div>
+                    </div>
+
+                    <!-- Repita mais .team-item para o resto da equipe -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Equipe Fim -->
+
+    <!-- Parceiros Início (Slider Owl Carousel) -->
+    <div id="partners" class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Nossos Parceiros</h6>
+                <h1 class="mb-5">Quem Caminha ao Nosso Lado</h1>
+                <!--<p class="mb-4">
+                    O Japiim Digital acontece graças a parceiros que compartilham nosso propósito de democratizar o uso ético da IA na educação. Juntos, construímos oportunidades para comunidades historicamente esquecidas.
+                </p>-->
+            </div>
+            <div class="owl-carousel partners-carousel position-relative">
+                <div class="bg-light p-3 text-center rounded">
+                    <a href="https://www.fappr.pr.gov.br/" target="_blank">
+                    <img src="img-new/logofa.png" alt="Parceiro 1" class="img-fluid">
+                    </a>
+                </div>
+                <div class="bg-light p-3 text-center rounded">
+                    <a href="https://ipec.org.br/" target="_blank">
+                    <img src="img-new/ipec.png" alt="Parceiro 5" class="img-fluid">
+                    </a>
+                </div>
+                <div class="bg-light p-3 text-center rounded">
+                    <a href="https://www3.unicentro.br/" target="_blank">
+                    <img src="img-new/unicentro.png" alt="Parceiro 5" class="img-fluid">
+                    </a>
+                </div>
+                <div class="bg-light p-3 text-center rounded">
+                    <a href="https://inteligentehub.com.br/" target="_blank">
+                    <img src="img-new/Logotipo InteliGente.png" alt="Parceiro 2" class="img-fluid">
+                    </a>
+                </div>
+                <div class="bg-light p-3 text-center rounded">
+                    <a href="https://www.utfpr.edu.br/" target="_blank">
+                    <img src="img-new/utfpr.png" alt="Parceiro 3" class="img-fluid">
+                    </a>
+                </div>
+                <div class="bg-light p-3 text-center rounded">
+                    <a href="https://www.icmc.usp.br/" target="_blank">
+                    <img src="img-new/icmc.png" alt="Parceiro 3" class="img-fluid">
+                    </a>
+                </div>
+                <div class="bg-light p-3 text-center rounded">
+                    <a href="https://ai4pep.org/" target="_blank">
+                    <img src="img-new/AI4PEP2-logo.png" alt="Parceiro 4" class="img-fluid">
+                    </a>
+                </div>
+                <div class="bg-light p-3 text-center rounded">
+                    <a href="https://autoaipandemics.icmc.usp.br/" target="_blank">
+                    <img src="img-new/logo.png" alt="Parceiro 5" class="img-fluid">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Parceiros Fim -->
+
+    <!-- Depoimentos Início -->
+    <!-- <div id="test" class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">Depoimentos</h6>
+                <h1 class="mb-5">O Que Nossos Alunos Dizem!</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel position-relative">
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-1.jpg" style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">Nome do Aluno</h5>
+                    <p>Profissão</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-2.jpg" style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">Nome do Aluno</h5>
+                    <p>Profissão</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-3.jpg" style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">Nome do Aluno</h5>
+                    <p>Profissão</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-4.jpg" style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">Nome do Aluno</h5>
+                    <p>Profissão</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- Depoimentos Fim -->
+
+    <!-- FAQ Start -->
+    <div id="faq" class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">FAQ</h6>
+                <h1 class="mb-5">Perguntas Frequentes</h1>
+            </div>
+            <h2 class="text-center mb-4"></h2>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    O que é o Japiim Digital?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    A Inteligência Artificial (IA) transformou nossa sociedade e economia. No entanto, a maioria das inovações tem se concentrado em países do Norte Global, negligenciando as necessidades e os desafios únicos enfrentados por regiões menos desenvolvidas, como o Sul Global. Essa disparidade é evidente no Brasil ao analisarmos o acesso à educação tecnológica em áreas carentes. Muitas escolas nessas áreas enfrentam desafios relacionados à falta de infraestrutura básica, incluindo acesso estável à internet, dispositivos suficientes e pessoal capacitado para dar suporte à integração tecnológica. Além disso, barreiras sociais e econômicas limitam a capacidade de acesso a treinamentos e recursos contínuos, exacerbando a exclusão digital. Com base nisso, propomos uma iniciativa de pesquisa inovadora chamada Japiim Digital. Essa iniciativa visa ouvir e compreender as necessidades específicas da integração da IA no Brasil, com atenção especial às comunidades ribeirinhas, povos indígenas, comunidades quilombolas e periferias urbanas (favelas). Nosso objetivo é amplificar as vozes dessas comunidades e, desenvolver o primeiro estudo que realmente capture suas realidades.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Objetivos da Pesquisa?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                   Nosso principal objetivo é desenvolver um framework baseado em evidências para a adoção da IA em comunidades marginalizadas. Para isso, planejamos trabalhar com parceiros comunitários para entrevistar o maior número possível de membros, utilizando metodologias qualitativas e quantitativas, a fim de desenvolver uma estrutura que reflita os principais desafios enfrentados por cada comunidade, juntamente com um guia para a implementação da educação tecnológica e em IA, adaptada às suas necessidades. Especificamente, pretendemos alcançar os seguintes resultados concretos:
+
+                                   </br>
+                                   </br>
+
+                                   (1) Desenvolver e validar um framework para adoção de IA contextualizado culturalmente, cocriada com educadores, estudantes e líderes de comunidades ribeirinhas, territórios indígenas, comunidades quilombolas e periferias urbanas (favelas).
+
+                                   </br>
+                                   </br>
+
+                                   (2) A coleta e disseminação de dados de pesquisa envolvendo mais de 1.500 membros das comunidades, alcançados por meio de parcerias em diferentes regiões do país.
+
+                                   </br>
+                                   </br>
+
+                                   (3) Estabelecer um modelo para a implementação da educação tecnológica, especificamente em IA, baseado em uma visão real de comunidades que possa ser adotado por governos, ONGs, instituições de ensino ou outras partes interessadas no Brasil e em outros países do Sul Global.
+
+                                   </br>
+                                   </br>
+
+                                   (4) Oferecer treinamento básico em alfabetização tecnológica para participantes e membros das comunidades, com foco em conceitos fundamentais de IA.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Questões de Pesquisa?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Considerando nossos objetivos, buscamos responder às seguintes questões de pesquisa:
+
+                                    </br>
+                                    </br>
+
+                                    (1) As comunidades enxergam valor no uso de tecnologias como a IA em seu contexto e cultura? Ou compreendem sua definição, seu potencial real e desafios? Qual a relevância percebida para elas?
+
+                                    </br>
+                                    </br>
+
+                                    (2) Quais fatores estruturais, pedagógicos, culturais e socioeconômicos mais influenciam a capacidade dessas comunidades de adotar tecnologias, como a IA?
+
+                                    </br>
+                                    </br>
+
+                                    (3) Como podemos levar a tecnologia e a IA a essas comunidades? Quais formas de apoio, desenvolvimento profissional e engajamento comunitário são essenciais para possibilitar a integração equitativa, contextualizada e sustentável da IA?
+
+                                    </br>
+                                    </br>
+
+                                    (4) Após interagir com as comunidades e analisar os dados ao longo do processo de pesquisa, como poderíamos repensar o significado mais profundo e concreto de “IA para Todos” para a sociedade?
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Metodologia: Uma Abordagem de Métodos Mistos para Pesquisa Inclusiva?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Nosso estudo adota uma abordagem de pesquisa de métodos mistos, integrando metodologias quantitativas e qualitativas para analisar os desafios e as oportunidades para a implementação tecnológica, especificamente de IA, em comunidades ribeirinhas, territórios indígenas, comunidades quilombolas e periferias urbanas (favelas) no Brasil. Para a metodologia qualitativa, utilizamos uma abordagem participativa e etnográfica, com a colaboração ativa de parceiros locais em cada comunidade. Esses parceiros atuam como mediadores e pesquisadores de campo, garantindo que a coleta de dados seja feita com respeito e em concordância com as realidades culturais e sociais de cada grupo.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    O que é o Hub InteliGente?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Japiim Digital é uma das iniciativas vinculadas ao Hub InteliGente (Construindo Caminhos de Igualdade com Inteligência Artificial). O projeto InteliGente já impactou direta e indiretamente milhares de estudantes, reconhecido, em 2024, pelo Fundo Regional para a Inovação Digital na América Latina e no Caribe (FRIDA) como uma das iniciativas mais transformadoras da região. Também foi selecionado em 2025 para Coleção Global HundrED 2026, figurando entre as práticas educacionais mais impactantes e inspiradoras do mundo.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FAQ End -->
+
+    <!-- Footer Start -->
+    <div id="contato" class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <!-- Contato -->
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-white mb-3">Contato</h4>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>davidlafigueiredo@gmail.com</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>bonidia@utfpr.edu.br</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>luis.morello@ipec.org.br</p>
+                    <!--<h5 class="text-white mt-4">Redes Sociais</h5>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social me-2" href="https://instagram.com/inteligente_utfpr"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-social me-2" href="https://www.instagram.com/projeto_tedi/"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-social me-2" href="https://youtube.com/@InteliGente-AI"><i class="fab fa-youtube"></i></a>
+                    </div>-->
+                </div>
+
+                <!-- Sobre -->
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-white mb-3">Sobre o Sabiá</h4>
+                    <p>
+                        Sabiá é uma iniciativa dedicada a transformar a saúde pública por meio da integração, organização e uso inteligente de dados. Nosso propósito é fortalecer decisões em saúde, reduzir desigualdades e garantir que gestores, profissionais e cidadãos tenham acesso a informações confiáveis, seguras e baseadas em evidências.
+                    </p>
+                    <a class="btn btn-primary btn-sm mt-2" href="#about">Saiba Mais</a>
+                </div>
+
+                <!-- Newsletter e Links Úteis -->
+                <div class="col-lg-4 col-md-12">
+                    <!--<h4 class="text-white mb-3">Fique por Dentro</h4>
+                    <p>Inscreva-se em nossa newsletter e receba novidades sobre o Japiim Digital, eventos, publicações e oportunidades de participação.</p>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <input id="email" class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Seu e-mail">
+                        <button id="subscribeButton" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Inscrever-se</button>
+                    </div>-->
+                    <h4 class="text-white mb-3">Links Úteis</h4>
+                    <div class="d-flex flex-column">
+                        <a class="text-light mb-2" href="#about"><i class="fa fa-angle-right me-2"></i>Sobre Nós</a>
+                        <a class="text-light mb-2" href="#news"><i class="fa fa-angle-right me-2"></i>Notícias</a>
+                        <a class="text-light mb-2" href="#metrics"><i class="fa fa-angle-right me-2"></i>Impacto</a>
+                        <a class="text-light mb-2" href="#contato"><i class="fa fa-angle-right me-2"></i>Contato</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">Sabiá</a>, Todos os Direitos Reservados.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-menu">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <div class="gtranslate_wrapper"></div>
+    <script>window.gtranslateSettings = {"default_language":"pt","languages":["pt", "en", "fr","de","it","es"],"wrapper_selector":".gtranslate_wrapper","switcher_horizontal_position":"left","switcher_vertical_position":"bottom","alt_flags":{"en":"usa","pt":"brazil"}}</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Script de Paginação (9 notícias por página) -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const itemsPerPage = 9;
+        const newsItems = Array.from(document.querySelectorAll('#newsList .news-item'));
+        const pagination = document.getElementById('newsPagination');
+
+        if (!newsItems.length) return;
+
+        const totalPages = Math.ceil(newsItems.length / itemsPerPage);
+
+        function showPage(page) {
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+
+            newsItems.forEach((item, index) => {
+                if (index >= start && index < end) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Atualiza estado visual da paginação
+            Array.from(pagination.querySelectorAll('.page-item')).forEach((li) => {
+                li.classList.remove('active');
+            });
+            const activeBtn = pagination.querySelector('[data-page="' + page + '"]');
+            if (activeBtn && activeBtn.parentElement) {
+                activeBtn.parentElement.classList.add('active');
+            }
+        }
+
+        function renderPagination() {
+            pagination.innerHTML = '';
+
+            for (let i = 1; i <= totalPages; i++) {
+                const li = document.createElement('li');
+                li.className = 'page-item' + (i === 1 ? ' active' : '');
+                const btn = document.createElement('button');
+                btn.className = 'page-link';
+                btn.textContent = i;
+                btn.setAttribute('type', 'button');
+                btn.setAttribute('data-page', i);
+
+                btn.addEventListener('click', function () {
+                    const page = parseInt(this.getAttribute('data-page'));
+                    showPage(page);
+                });
+
+                li.appendChild(btn);
+                pagination.appendChild(li);
+            }
+        }
+
+        renderPagination();
+        showPage(1);
+    });
+    </script>
+
+    <!-- Script de Inicialização do Owl Carousel -->
+    <script>
+        $(document).ready(function(){
+            $('.partners-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: { items: 2 },
+                    600: { items: 4 },
+                    1000: { items: 6 }
+                }
+            });
+        });
+    </script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

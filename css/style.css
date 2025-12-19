@@ -5,6 +5,10 @@
     --dark: #181d38;
 }
 
+body {
+    zoom: 1.25;   /* 125% */
+}
+
 .fw-medium {
     font-weight: 600 !important;
 }

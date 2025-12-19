@@ -19,6 +19,26 @@
     }
 }
 
+/* Corrigir espaço excessivo no About para celular */
+@media (max-width: 768px) {
+
+    #about .col-lg-6[style] {
+        min-height: auto !important;   /* remove o mínimo de 400px */
+    }
+
+    #about .position-relative {
+        height: auto !important;
+    }
+
+    #about img {
+        position: static !important;
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+        margin-bottom: 20px; /* aproxima a imagem do texto */
+    }
+}
+
 .fw-medium {
     font-weight: 600 !important;
 }
@@ -178,7 +198,52 @@
 }
 
 
-/*** Header carousel ***/
+/* ===== CORREÇÃO DO CARROSSEL NO CELULAR ===== */
+@media (max-width: 768px) {
+
+    /* Altura menor e sem distorção */
+    .header-carousel .owl-carousel-item {
+        min-height: 420px !important;
+    }
+
+    .header-carousel .owl-carousel-item img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;       /* A imagem preenche sem ficar feia */
+        object-position: center; /* Centraliza melhor */
+    }
+
+    /* Área de texto mais compacta */
+    .header-carousel h1 {
+        font-size: 1.9rem !important;
+        line-height: 2.3rem !important;
+    }
+
+    .header-carousel h5 {
+        font-size: 0.9rem !important;
+        margin-bottom: 8px !important;
+    }
+
+    .header-carousel p {
+        font-size: 1rem !important;
+        line-height: 1.35rem !important;
+        margin-bottom: 12px !important;
+    }
+
+    .header-carousel a.btn {
+        padding: 8px 16px !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* Remove o excesso de padding do container */
+    .header-carousel .container {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
+
+/*** Header carousel 
 @media (max-width: 768px) {
     .header-carousel .owl-carousel-item {
         position: relative;
@@ -191,7 +256,7 @@
         height: 100%;
         object-fit: cover;
     }
-}
+}***/
 
 .header-carousel .owl-nav {
     position: absolute;

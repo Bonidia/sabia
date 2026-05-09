@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NCLJFZFPL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8NCLJFZFPL');
+    </script>
+
+    <meta charset="utf-8">
+    <title>Resultados e Impactos | Sabiá Data Lake</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Sabiá Data Lake, resultados, publicações, soluções, impacto, saúde pública, inteligência artificial" name="keywords">
+    <meta content="Conheça os resultados, publicações, soluções, entregas e impactos do Sabiá Data Lake." name="description">
+
+    <!-- Favicon -->
+    <link href="logo/sabia_correto.webp" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --sabia-primary: #06BBCC;
+            --sabia-dark: #181D38;
+            --sabia-soft: #F4FBFC;
+            --sabia-muted: #6B7280;
+            --sabia-border: rgba(6, 187, 204, 0.16);
+            --sabia-gradient: linear-gradient(135deg, #06BBCC 0%, #0B7FA3 48%, #181D38 100%);
+        }
+
+        body {
+            background: #ffffff;
+        }
+
+        .results-hero {
+            position: relative;
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 15% 15%, rgba(6,187,204,.35), transparent 28%),
+                radial-gradient(circle at 85% 25%, rgba(255,255,255,.14), transparent 25%),
+                linear-gradient(135deg, rgba(24,29,56,.96), rgba(24,29,56,.82)),
+                url('img-new/15.png') center/cover no-repeat;
+        }
+
+        .results-hero::after {
+            content: "";
+            position: absolute;
+            inset: auto -10% -38% -10%;
+            height: 280px;
+            background: #fff;
+            transform: rotate(-4deg);
+            transform-origin: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 16px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.12);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,.22);
+            backdrop-filter: blur(10px);
+            font-weight: 700;
+            letter-spacing: .02em;
+        }
+
+        .hero-title {
+            color: #fff;
+            font-weight: 800;
+            line-height: 1.04;
+            font-size: clamp(2.6rem, 6vw, 5.4rem);
+        }
+
+        .hero-title span {
+            color: var(--sabia-primary);
+        }
+
+        .hero-text {
+            color: rgba(255,255,255,.86);
+            font-size: 1.16rem;
+            max-width: 820px;
+        }
+
+        .floating-panel {
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.22);
+            border-radius: 28px;
+            padding: 24px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 24px 80px rgba(0,0,0,.28);
+        }
+
+        .floating-panel .mini-card {
+            background: rgba(255,255,255,.92);
+            border-radius: 20px;
+            padding: 18px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(255,255,255,.7);
+        }
+
+        .mini-card strong {
+            color: var(--sabia-dark);
+            font-size: 1.55rem;
+            display: block;
+            line-height: 1;
+        }
+
+        .mini-card span {
+            color: var(--sabia-muted);
+            font-size: .92rem;
+        }
+
+        .section-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(6,187,204,.1);
+            color: #05899A;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: .78rem;
+            letter-spacing: .08em;
+        }
+
+        .section-title {
+            color: var(--sabia-dark);
+            font-weight: 800;
+            letter-spacing: -.03em;
+        }
+
+        .section-lead {
+            color: var(--sabia-muted);
+            font-size: 1.05rem;
+            max-width: 840px;
+        }
+
+        .metric-card {
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid var(--sabia-border);
+            border-radius: 28px;
+            padding: 28px;
+            height: 100%;
+            box-shadow: 0 18px 45px rgba(24,29,56,.06);
+            transition: all .25s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 70px rgba(24,29,56,.12);
+        }
+
+        .metric-card::before {
+            content: "";
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(6,187,204,.12);
+        }
+
+        .metric-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            background: var(--sabia-gradient);
+            color: #fff;
+            font-size: 1.55rem;
+            margin-bottom: 20px;
+        }
+
+        .metric-number {
+            color: var(--sabia-dark);
+            font-size: 2.25rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .metric-label {
+            color: var(--sabia-muted);
+            margin-top: 10px;
+        }
+
+        .impact-strip {
+            background: var(--sabia-gradient);
+            border-radius: 34px;
+            padding: 36px;
+            color: #fff;
+            box-shadow: 0 30px 80px rgba(6,187,204,.22);
+        }
+
+        .impact-strip p {
+            color: rgba(255,255,255,.84);
+        }
+
+        .result-tabs {
+            border: 0;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 34px;
+        }
+
+        .result-tabs .nav-link {
+            border: 1px solid rgba(6,187,204,.18);
+            border-radius: 999px;
+            color: var(--sabia-dark);
+            background: #fff;
+            padding: 12px 18px;
+            font-weight: 800;
+            box-shadow: 0 12px 28px rgba(24,29,56,.04);
+        }
+
+        .result-tabs .nav-link.active {
+            color: #fff;
+            background: var(--sabia-gradient);
+            border-color: transparent;
+        }
+
+        .result-card {
+            height: 100%;
+            border: 1px solid rgba(6,187,204,.16);
+            border-radius: 26px;
+            background: #fff;
+            padding: 26px;
+            box-shadow: 0 18px 46px rgba(24,29,56,.06);
+            transition: all .25s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 28px 70px rgba(24,29,56,.12);
+        }
+
+        .result-card .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(6,187,204,.1);
+            color: #068C9A;
+            font-weight: 800;
+            font-size: .75rem;
+            margin-bottom: 14px;
+        }
+
+        .result-card h4 {
+            color: var(--sabia-dark);
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .result-card p {
+            color: var(--sabia-muted);
+        }
+
+        .result-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .result-meta span {
+            font-size: .82rem;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #F4FBFC;
+            color: #4B5563;
+            border: 1px solid rgba(6,187,204,.12);
+        }
+
+        .solution-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            padding: 30px;
+            height: 100%;
+            background: #fff;
+            border: 1px solid rgba(6,187,204,.14);
+            box-shadow: 0 20px 60px rgba(24,29,56,.07);
+        }
+
+        .solution-card.featured {
+            background: linear-gradient(135deg, rgba(24,29,56,.96), rgba(6,187,204,.88));
+            color: #fff;
+        }
+
+        .solution-card.featured p,
+        .solution-card.featured .solution-list li {
+            color: rgba(255,255,255,.82);
+        }
+
+        .solution-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(6,187,204,.1);
+            color: #0692A3;
+            font-size: 1.7rem;
+            margin-bottom: 18px;
+        }
+
+        .solution-card.featured .solution-icon {
+            background: rgba(255,255,255,.16);
+            color: #fff;
+        }
+
+        .solution-list {
+            list-style: none;
+            padding: 0;
+            margin: 18px 0 0;
+        }
+
+        .solution-list li {
+            color: var(--sabia-muted);
+            margin-bottom: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .solution-list i {
+            color: var(--sabia-primary);
+            margin-top: 2px;
+        }
+
+        .timeline-modern {
+            position: relative;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .timeline-modern::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            left: 16px;
+            width: 2px;
+            background: rgba(6,187,204,.2);
+        }
+
+        .timeline-modern li {
+            position: relative;
+            padding-left: 54px;
+            margin-bottom: 28px;
+        }
+
+        .timeline-modern li::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 2px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            border: 5px solid var(--sabia-primary);
+            box-shadow: 0 0 0 6px rgba(6,187,204,.1);
+        }
+
+        .timeline-modern .year {
+            display: inline-block;
+            font-weight: 800;
+            color: #068C9A;
+            margin-bottom: 6px;
+        }
+
+        .timeline-modern h5 {
+            color: var(--sabia-dark);
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .timeline-modern p {
+            color: var(--sabia-muted);
+            margin: 0;
+        }
+
+        .cta-results {
+            border-radius: 34px;
+            padding: 42px;
+            background:
+                radial-gradient(circle at top right, rgba(6,187,204,.22), transparent 36%),
+                #F4FBFC;
+            border: 1px solid rgba(6,187,204,.16);
+        }
+
+        .filter-box {
+            border-radius: 24px;
+            background: #fff;
+            border: 1px solid rgba(6,187,204,.14);
+            box-shadow: 0 18px 48px rgba(24,29,56,.06);
+            padding: 18px;
+        }
+
+        .search-input {
+            border-radius: 999px;
+            border: 1px solid rgba(6,187,204,.22);
+            padding: 13px 18px;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 0 .25rem rgba(6,187,204,.15);
+            border-color: var(--sabia-primary);
+        }
+
+        @media (max-width: 991px) {
+            .results-hero {
+                min-height: auto;
+                padding: 110px 0 140px;
+            }
+
+            .floating-panel {
+                margin-top: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <img src="logo/sabia_correto.webp" alt="Sabiá" style="height: 75px;">
+        </a>
+
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="#visao-geral" class="nav-item nav-link">Resultados</a>
+                <a href="#publicacoes" class="nav-item nav-link">Publicações</a>
+                <a href="#contato" class="nav-item nav-link">Contato</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Hero Start -->
+    <section class="results-hero">
+        <div class="container hero-content">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-8">
+                    <div class="hero-badge mb-4 wow fadeInDown" data-wow-delay="0.1s">
+                        <i class="bi bi-graph-up"></i> Resultados, entregas e impacto científico-social
+                    </div>
+                    <h1 class="hero-title mb-4 wow fadeInUp" data-wow-delay="0.2s">
+                        Evidências que transformam <span>dados em saúde</span>.
+                    </h1>
+                    <p class="hero-text mb-4 wow fadeInUp" data-wow-delay="0.3s">
+                        Esta página reúne os principais resultados do Sabiá Data Lake: publicações, soluções desenvolvidas, entregas técnicas, indicadores de impacto, formação de pessoas e avanços para uma saúde pública mais inteligente, segura e orientada por evidências.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 wow fadeInUp" data-wow-delay="0.4s">
+                        <a href="#visao-geral" class="btn btn-primary py-3 px-5">Ver Resultados</a>
+                        <a href="#publicacoes" class="btn btn-outline-light py-3 px-5">Publicações</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero End -->
+
+    <!-- Metrics Start -->
+    <section id="visao-geral" class="container-xxl py-5">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="section-kicker"><i class="bi bi-stars"></i> Visão Geral</span>
+                </br>
+                </br>
+                </br>
+                <p class="section-lead mx-auto">
+                  O Sabiá Data Lake transforma dados fragmentados em inteligência pública para a saúde. Seus resultados reúnem avanços científicos, soluções tecnológicas, governança de dados e aplicações em inteligência artificial para apoiar pesquisa, gestão, vigilância epidemiológica e decisões mais seguras, rápidas e baseadas em evidências.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="bi bi-journal-richtext"></i></div>
+                        <div class="metric-number" data-count="5">5</div>
+                        <div class="metric-label">Artigos, resumos e publicações técnicas vinculadas ao projeto</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="bi bi-cpu"></i></div>
+                        <div class="metric-number" data-count="2">2</div>
+                        <div class="metric-label">Soluções, protótipos, módulos ou componentes tecnológicos desenvolvidos</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="bi bi-people"></i></div>
+                        <div class="metric-number" data-count="20">20</div>
+                        <div class="metric-label">Pesquisadores, bolsistas, técnicos e estudantes envolvidos diretamente</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="bi bi-building"></i></div>
+                        <div class="metric-number" data-count="7">7</div>
+                        <div class="metric-label">Instituições, setores, parceiros ou unidades conectadas à iniciativa</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="impact-strip mt-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-8">
+                        <h2 class="text-white mb-3">Do armazenamento seguro à decisão em saúde</h2>
+                        <p class="mb-0">
+                            O Sabiá Data Lake organiza dados, infraestrutura, governança e inteligência artificial para apoiar pesquisa, gestão pública, vigilância epidemiológica e desenvolvimento de soluções orientadas às necessidades reais da população.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a href="#publicacoes" class="btn btn-light py-3 px-5">Conhecer soluções</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Metrics End -->
+
+    <!-- Tabs Results Start -->
+    <section id="publicacoes" class="container-xxl py-5" style="background: var(--sabia-soft);">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="section-kicker"><i class="bi bi-grid-3x3-gap"></i> Produção e Entregas</span>
+                </br>
+                </br>
+                <p class="section-lead mx-auto">
+                    Use as abas para navegar entre publicações, soluções, eventos, materiais e entregas técnicas.
+                </p>
+            </div>
+
+            <div class="filter-box mb-4">
+                <div class="row g-3 align-items-center">
+                    <div class="col-lg-8">
+                        <input id="resultSearch" class="form-control search-input" type="search" placeholder="Buscar por título, palavra-chave, solução, artigo ou ano...">
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <span class="text-muted small"><i class="bi bi-search me-1"></i>Busca simples nos cards desta página</span>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="nav nav-tabs result-tabs" id="resultTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="artigos-tab" data-bs-toggle="tab" data-bs-target="#artigos" type="button" role="tab">
+                        <i class="bi bi-journal-text me-2"></i>Artigos
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="solucoes-tab" data-bs-toggle="tab" data-bs-target="#solucoes-tab-pane" type="button" role="tab">
+                        <i class="bi bi-cpu me-2"></i>Soluções
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="eventos-tab" data-bs-toggle="tab" data-bs-target="#eventos" type="button" role="tab">
+                        <i class="bi bi-mic me-2"></i>Eventos
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="materiais-tab" data-bs-toggle="tab" data-bs-target="#materiais" type="button" role="tab">
+                        <i class="bi bi-box-seam me-2"></i>Conquistas
+                    </button>
+                </li>
+                <!--<li class="nav-item" role="presentation">
+                    <button class="nav-link" id="governanca-tab" data-bs-toggle="tab" data-bs-target="#governanca" type="button" role="tab">
+                        <i class="bi bi-shield-check me-2"></i>Governança
+                    </button>
+                </li>-->
+            </ul>
+
+            <div class="tab-content" id="resultTabsContent">
+                <!-- Artigos -->
+                <div class="tab-pane fade show active" id="artigos" role="tabpanel">
+                    <div class="row g-4 result-grid">
+                        <div class="col-lg-4 col-md-6 result-item" data-keywords="artigo publicação pesquisa saúde inteligência artificial 2026">
+                            <div class="result-card">
+                                <span class="tag"><i class="bi bi-journal-text"></i>Artigo científico</span>
+                                <h4>BioAutoML-FAST</h4>
+                                <p>An automated machine-learning platform for reusable and benchmarked biological sequence models.</p>
+                                <div class="result-meta">
+                                    <span>2026</span><span>BioRxiv</span><span>Status: Preprint</span>
+                                </div>
+                                <a href="https://doi.org/10.64898/2026.04.18.719383" class="btn btn-sm btn-primary mt-4">Acessar publicação</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 result-item" data-keywords="artigo publicação pesquisa saúde inteligência artificial 2026">
+                            <div class="result-card">
+                                <span class="tag"><i class="bi bi-file-earmark-text"></i> Artigo de Conferência</span>
+                                <h4>AutoAI Hub</h4>
+                                <p>From Data to Society, Democratizing Machine Learning for Everyone</p>
+                                <div class="result-meta">
+                                    <span>2026</span><span>Human Genome Meeting</span><span>Apresentação</span>
+                                </div>
+                                <a href="https://www.hugo-hgm2026.org/files/programme.pdf?v=12" class="btn btn-sm btn-primary mt-4">Ver detalhes</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 result-item" data-keywords="artigo publicação pesquisa saúde inteligência artificial 2026">
+                            <div class="result-card">
+                                <span class="tag"><i class="bi bi-file-earmark-text"></i> Artigo de Conferência</span>
+                                <h4>SynapSpeech</h4>
+                                <p>Escutando os Primeiros Sinais do Alzheimer</p>
+                                <div class="result-meta">
+                                    <span>2025</span><span>Congresso Nacional de Iniciação Científica</span><span>Apresentação</span>
+                                </div>
+                                <a href="https://synap.inteligentehub.com.br/" class="btn btn-sm btn-primary mt-4">Ver detalhes</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 result-item" data-keywords="Diagnostic Utility Of Machine Learning In Central Adrenal Insufficiency Due To Pituitary Disorders. Journal Of The Endocrine Society">
+                            <div class="result-card">
+                                <span class="tag"><i class="bi bi-file-earmark-text"></i> Artigo científico</span>
+                                <h4>Machine Learning In Central Adrenal Insufficiency</h4>
+                                <p>Diagnostic Utility Of Machine Learning In Central Adrenal Insufficiency Due To Pituitary Disorders.</p>
+                                <div class="result-meta">
+                                    <span>2025</span><span>Journal of the Endocrine Society</span><span>Status: Publicado</span>
+                                </div>
+                                <a href="http://dx.doi.org/10.1210/jendso/bvaf149.1357" class="btn btn-sm btn-primary mt-4">Ver detalhes</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 result-item" data-keywords="Simplifying the Prediction of Protein-Protein actions through Artificial Intelligence.">
+                            <div class="result-card">
+                                <span class="tag"><i class="bi bi-file-code"></i> Artigo científico</span>
+                                <h4>BioPrediction-PPI</h4>
+                                <p>Simplifying the Prediction of Protein-Protein actions through Artificial Intelligence.</p>
+                                <div class="result-meta">
+                                    <span>2025</span><span>BioRxiv</span><span>Status: Preprint</span>
+                                </div>
+                                <a href="https://www.biorxiv.org/content/10.1101/2025.11.16.688401v1" class="btn btn-sm btn-primary mt-4">Ver detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soluções -->
+                <div class="tab-pane fade" id="solucoes-tab-pane" role="tabpanel">
+                    <div class="row g-4 result-grid">
+                        <div class="col-lg-4 col-md-6 result-item" data-keywords="O Japiim traduz dados complexos do SUS em conversas simples no WhatsApp. Informação oficial, rápida e acessível para todos.">
+                            <div class="result-card">
+                                <span class="tag"><i class="bi bi-hdd-network"></i> Japiim Health</span>
+                                <h4>Saúde Pública na Palma da Sua Mão</h4>
+                                <p>O Japiim traduz dados complexos do SUS em conversas simples no WhatsApp. Informação oficial, rápida e acessível para todos.</p>
+                                <div class="result-meta">
+                                    <span>Big Data</span><span>Saúde</span><span>LLM</span></span><span>IA para Todos</span>
+                                </div>
+                                <a href="https://japiimbr.inteligentehub.com.br/" class="btn btn-sm btn-primary mt-4">Ver solução</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 result-item" data-keywords="dashboard epidemiologia indicadores gestão pública">
+                            <div class="result-card">
+                                <span class="tag"><i class="bi bi-bar-chart"></i> SynapSpeech</span>
+                                <h4>Escutando sinais por meio da linguagem</h4>
+                                <p>Pipeline completo para triagem e acompanhamento de sinais cognitivos associados ao Alzheimer a partir de fala espontânea em português brasileiro. Foco em pesquisa aplicada, acessível e de baixo custo.</p>
+                                <div class="result-meta">
+                                   <span>Pipeline</span><span>Saúde</span><span>IA</span></span><span>IA para Todos</span>
+                                </div>
+                                <a href="https://synap.inteligentehub.com.br/" class="btn btn-sm btn-primary mt-4">Ver solução</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Eventos -->
+                <div class="tab-pane fade" id="eventos" role="tabpanel">
+                    <div class="row g-4 result-grid">
+                        
+                        <div class="col-lg-4 col-md-6 result-item" data-keywords="evento palestra apresentação treinamento formação">
+                            <div class="result-card">
+                                <span class="tag"><i class="bi bi-mic"></i> Apresentação</span>
+                                <h4>Human Genome Meeting</h4>
+                                <p>AutoAI Hub: From Data to Society, Democratizing Machine Learning for Everyone</p>
+                                <div class="result-meta">
+                                    <span>2026</span><span>Apresentação</span>
+                                </div>
+                                <a href="https://www.hugo-hgm2026.org/files/programme.pdf?v=12" class="btn btn-sm btn-primary mt-4">Ver registro</a>
+                            </div>
+                        </div>
+
+                         <div class="col-lg-4 col-md-6 result-item" data-keywords="evento palestra apresentação treinamento formação">
+                            <div class="result-card">
+                                <span class="tag"><i class="bi bi-mic"></i> Apresentação</span>
+                                <h4>Semana Araucária de CT&I</h4>
+                                <p>Apresentação institucional do Sabiá Data Lake</p>
+                                <div class="result-meta">
+                                    <span>2026</span><span>Palestra</span><span>Institucional</span>
+                                </div>
+                                <a href="https://doity.com.br/semana-araucaria-de-cti-recursos-pblicos-transformados-em-conhecimento-e-desenvolvimento" class="btn btn-sm btn-primary mt-4">Ver registro</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Materiais -->
+                <div class="tab-pane fade" id="materiais" role="tabpanel">
+                    <div class="row g-4 result-grid">
+                        
+                        <div class="col-lg-4 col-md-6 result-item" data-keywords="BioAutoML foi selecionada entre as 10 iniciativas de IA de maior impacto mundial que abordam os ODS">
+                            <div class="result-card">
+                                <span class="tag"><i class="bi bi-book"></i> Conquistas</span>
+                                <h4>IRCAI – UNESCO</h4>
+                                <p>Top 10 Global AI Solutions for the SDGs (2025). BioAutoML foi selecionada entre as 10 iniciativas de IA de maior impacto mundial que abordam os ODS - Dr. Robson Bonidia e André de Carvalho.</p>
+                                <div class="result-meta">
+                                    <span>BioAutoML</span>
+                                </div>
+                                <a href="https://ircai.org/top-100-global-ai-solutions-to-worlds-societal-and-environmental-challenges/" class="btn btn-sm btn-primary mt-4">Ver registro</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 result-item" data-keywords="Fundação Araucária investe R$ 3 milhões em Data Lake para pesquisa genômica">
+                            <div class="result-card">
+                                <span class="tag"><i class="bi bi-book"></i> Conquistas</span>
+                                <h4>Investimento</h4>
+                                <p>Fundação Araucária, SETI and Governo do Paraná investem R$ 3 milhões no Sabiá Data Lake.</p>
+                                <div class="result-meta">
+                                    <span>Sabiá Data Lake</span>
+                                </div>
+                                <a href="https://www.seti.pr.gov.br/Noticia/Fundacao-Araucaria-investe-R-3-milhoes-em-Data-Lake-para-pesquisa-genomica" class="btn btn-sm btn-primary mt-4">Ver registro</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Governança -->
+                <!--<div class="tab-pane fade" id="governanca" role="tabpanel">
+                    <div class="row g-4 result-grid">
+                        <div class="col-lg-4 col-md-6 result-item" data-keywords="governança lgpd segurança ética conformidade termos">
+                            <div class="result-card">
+                                <span class="tag"><i class="bi bi-shield-lock"></i> Governança</span>
+                                <h4>Kit de governança, termos e conformidade</h4>
+                                <p>Conjunto de documentos para credenciamento, confidencialidade, uso aceitável, controle de acesso, auditoria, encerramento e segurança da informação.</p>
+                                <div class="result-meta">
+                                    <span>LGPD</span><span>Auditoria</span><span>Conformidade</span>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-primary mt-4">Ver documentos</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 result-item" data-keywords="ambiente seguro acesso dados pesquisador autorização">
+                            <div class="result-card">
+                                <span class="tag"><i class="bi bi-person-check"></i> Acesso seguro</span>
+                                <h4>Fluxo de solicitação e autorização de acesso</h4>
+                                <p>Processo estruturado para análise, aprovação e rastreabilidade de acessos a ambientes e dados, alinhado à ética, segurança e legislação vigente.</p>
+                                <div class="result-meta">
+                                    <span>Acesso</span><span>Rastreabilidade</span><span>Ética</span>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-primary mt-4">Ver fluxo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+
+            </div>
+        </div>
+    </section>
+    <!-- Tabs Results End -->
+
+    <!-- Solutions Start -->
+    <!--<section id="solucoes" class="container-xxl py-5">
+        <div class="container py-4">
+            <div class="row align-items-end mb-5">
+                <div class="col-lg-8">
+                    <span class="section-kicker"><i class="bi bi-cpu"></i> Soluções em Destaque</span>
+                    </br>
+                    </br>
+                    <p class="section-lead mb-0">
+                        A página também pode destacar soluções prioritárias do ecossistema, com cards maiores, linguagem institucional e chamadas para páginas específicas, repositórios, relatórios ou dashboards.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                    <a href="#publicacoes" class="btn btn-primary py-3 px-5">Ver todas as entregas</a>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="solution-card featured">
+                        <div class="solution-icon"><i class="bi bi-hdd-rack"></i></div>
+                        <h3 class="text-white mb-3">Sabiá Data Lake</h3>
+                        <p>
+                            Infraestrutura para integrar, organizar e analisar dados em saúde, criando uma base segura para pesquisa, inovação, vigilância epidemiológica e tomada de decisão baseada em evidências.
+                        </p>
+                        <ul class="solution-list">
+                            <li><i class="bi bi-check-circle"></i><span>Arquitetura em camadas: bronze, prata e ouro.</span></li>
+                            <li><i class="bi bi-check-circle"></i><span>Governança orientada por LGPD, segurança e rastreabilidade.</span></li>
+                            <li><i class="bi bi-check-circle"></i><span>Base para modelos de IA, dashboards e estudos científicos.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="solution-card">
+                        <div class="solution-icon"><i class="bi bi-bar-chart-line"></i></div>
+                        <h4>Dashboards Inteligentes</h4>
+                        <p>Visualização de indicadores, padrões territoriais e informações estratégicas para gestores e pesquisadores.</p>
+                        <ul class="solution-list">
+                            <li><i class="bi bi-check-circle"></i><span>Indicadores de saúde</span></li>
+                            <li><i class="bi bi-check-circle"></i><span>Análise territorial</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="solution-card">
+                        <div class="solution-icon"><i class="bi bi-shield-check"></i></div>
+                        <h4>Governança de Dados</h4>
+                        <p>Documentos, fluxos e regras para garantir uso ético, seguro e responsável dos dados em saúde.</p>
+                        <ul class="solution-list">
+                            <li><i class="bi bi-check-circle"></i><span>Termos e políticas</span></li>
+                            <li><i class="bi bi-check-circle"></i><span>Controle de acesso</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+    <!-- Solutions End -->
+
+    <!-- Timeline Start -->
+    <section class="container-xxl py-5" style="background: var(--sabia-soft);">
+        <div class="container py-4">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-5">
+                    <span class="section-kicker"><i class="bi bi-clock-history"></i> Linha do Tempo</span>
+                    </br>
+                    </br>
+                    <p class="section-lead">
+                        A linha do tempo apresenta os principais marcos do Sabiá Data Lake. Ela evidencia o avanço contínuo do projeto na formação da equipe, implantação tecnológica, criação de mecanismos de governança, integração de dados, desenvolvimento de soluções analíticas e geração de resultados científicos e sociais.
+                    </p>
+                    <a href="#publicacoes" class="btn btn-primary py-3 px-5 mt-3">Explorar resultados</a>
+                </div>
+
+                <div class="col-lg-7">
+                    <ul class="timeline-modern">
+                        <li>
+                            <span class="year">2026</span>
+                            <h5>Início do Projeto e seleção da equipe</h5>
+                            <p>Organização das primeiras frentes técnicas, editais, bolsistas, e planejamento.</p>
+                        </li>
+                        <li>
+                            <span class="year">2026</span>
+                            <h5>Aquisição e organização do hardware</h5>
+                            <p>Planejamento, aquisição e estruturação dos equipamentos computacionais necessários para sustentar o Sabiá Data Lake.</p>
+                        </li>
+                        <li>
+                            <span class="year">2026</span>
+                            <h5>Organização da arquitetura do Data Lake</h5>
+                            <p>Definição da arquitetura técnica do Sabiá Data Lake, estruturando as camadas de ingestão, armazenamento, processamento, segurança e disponibilização dos dados.</p>
+                        </li>
+                        <li>
+                            <span class="year">2026</span>
+                            <h5>Início da divulgação e fechamento de parcerias</h5>
+                            <p>Ampliação da visibilidade institucional do Sabiá Data Lake por meio de ações de divulgação, apresentação do projeto a parceiros estratégicos e articulação com instituições públicas, acadêmicas e técnicas.</p>
+                        </li>
+                        <li>
+                            <span class="year">2026</span>
+                            <h5>Início da Política de Segurança da Informação</h5>
+                            <p>Estruturação das primeiras diretrizes da Política de Segurança da Informação do Sabiá Data Lake, definindo princípios, responsabilidades, controles de acesso, proteção de dados, rastreabilidade, uso aceitável dos recursos tecnológicos e procedimentos para reduzir riscos no tratamento de informações sensíveis em saúde.</p>
+                        </li>
+                        <li>
+                            <span class="year">2026</span>
+                            <h5>Governança, segurança e conformidade</h5>
+                            <p>Criação de termos, políticas, fluxos de acesso, documentação institucional e diretrizes para uso responsável dos dados.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Timeline End -->
+
+    <!-- Footer Start -->
+    <div id="contato" class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-white mb-3">Contato</h4>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>davidlafigueiredo@gmail.com</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>bonidia@utfpr.edu.br</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>luis.morello@ipec.org.br</p>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-white mb-3">Sobre o Sabiá</h4>
+                    <p>
+                        Sabiá é uma iniciativa dedicada a transformar a saúde pública por meio da integração, organização e uso inteligente de dados. Nosso propósito é fortalecer decisões em saúde, reduzir desigualdades e garantir acesso a informações confiáveis, seguras e baseadas em evidências.
+                    </p>
+                    <a class="btn btn-primary btn-sm mt-2" href="index.html">Saiba Mais</a>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <h4 class="text-white mb-3">Links Úteis</h4>
+                    <div class="d-flex flex-column">
+                        <a class="text-light mb-2" href="index.html"><i class="fa fa-angle-right me-2"></i>Sobre Nós</a>
+                        <a class="text-light mb-2" href="#visao-geral"><i class="fa fa-angle-right me-2"></i>Resultados</a>
+                        <a class="text-light mb-2" href="#publicacoes"><i class="fa fa-angle-right me-2"></i>Publicações</a>
+                        <a class="text-light mb-2" href="#solucoes"><i class="fa fa-angle-right me-2"></i>Soluções</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">Sabiá</a>, Todos os Direitos Reservados.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-menu"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <div class="gtranslate_wrapper"></div>
+    <script>
+        window.gtranslateSettings = {
+            "default_language":"pt",
+            "languages":["pt", "en", "fr", "de", "it", "es"],
+            "wrapper_selector":".gtranslate_wrapper",
+            "switcher_horizontal_position":"left",
+            "switcher_vertical_position":"bottom",
+            "alt_flags":{"en":"usa", "pt":"brazil"}
+        }
+    </script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <script>
+        // Busca simples nos cards
+        document.addEventListener('DOMContentLoaded', function () {
+            const search = document.getElementById('resultSearch');
+            const cards = Array.from(document.querySelectorAll('.result-item'));
+
+            if (search) {
+                search.addEventListener('input', function () {
+                    const term = this.value.toLowerCase().trim();
+
+                    cards.forEach(card => {
+                        const text = (card.innerText + ' ' + (card.dataset.keywords || '')).toLowerCase();
+                        card.style.display = text.includes(term) ? '' : 'none';
+                    });
+                });
+            }
+
+            // Contadores animados simples
+            const counters = document.querySelectorAll('[data-count]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count') || '0', 10);
+                let current = 0;
+                const steps = 40;
+                const increment = Math.max(1, Math.ceil(target / steps));
+
+                const update = () => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target;
+                    } else {
+                        counter.textContent = current;
+                        requestAnimationFrame(update);
+                    }
+                };
+                update();
+            });
+        });
+    </script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

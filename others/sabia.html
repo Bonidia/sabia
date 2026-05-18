@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sabiá Data Lake | Admin Smartwatches</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    :root {
+      --bg-main: #06141d;
+      --bg-deep: #031019;
+      --bg-soft: #0b2230;
+      --bg-card: rgba(255, 255, 255, 0.08);
+      --bg-card-strong: rgba(255, 255, 255, 0.13);
+      --border: rgba(255, 255, 255, 0.12);
+      --border-strong: rgba(255, 255, 255, 0.24);
+      --text: #eef8fb;
+      --muted: #a1bac6;
+      --muted-2: #6f8997;
+      --primary: #34d399;
+      --primary-2: #2dd4bf;
+      --blue: #60a5fa;
+      --yellow: #facc15;
+      --red: #fb7185;
+      --purple: #a78bfa;
+      --orange: #fb923c;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --sidebar-width: 306px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(52, 211, 153, 0.25), transparent 32%),
+        radial-gradient(circle at 95% 2%, rgba(45, 212, 191, 0.18), transparent 30%),
+        radial-gradient(circle at 50% 110%, rgba(96, 165, 250, 0.10), transparent 42%),
+        linear-gradient(135deg, #06131d 0%, #071822 42%, #092536 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.034) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.034) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.88), transparent 86%);
+      z-index: 0;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app-shell {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 24px 18px;
+      border-right: 1px solid var(--border);
+      background: rgba(4, 18, 28, 0.76);
+      backdrop-filter: blur(24px);
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      overflow-y: auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 23px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.045));
+      box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+    }
+
+    .brand-icon {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border-radius: 17px;
+      color: #052016;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      font-size: 1.45rem;
+      box-shadow: 0 14px 35px rgba(52, 211, 153, 0.24);
+    }
+
+    .brand h1 {
+      font-size: 1rem;
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+    }
+
+    .brand p {
+      margin-top: 4px;
+      font-size: 0.73rem;
+      color: var(--muted);
+    }
+
+    .sidebar-section-title {
+      margin: 4px 12px 10px;
+      color: var(--muted-2);
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-menu, .patient-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .nav-item, .patient-item {
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 17px;
+      padding: 12px 13px;
+      color: var(--muted);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-align: left;
+      transition: 0.22s ease;
+    }
+
+    .nav-item:hover, .patient-item:hover {
+      background: rgba(255,255,255,0.075);
+      color: var(--text);
+      border-color: var(--border);
+      transform: translateX(3px);
+    }
+
+    .nav-item.active, .patient-item.active {
+      color: #eafff7;
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.22), rgba(45, 212, 191, 0.10));
+      border-color: rgba(52, 211, 153, 0.36);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 16px 35px rgba(0,0,0,0.16);
+    }
+
+    .nav-item i {
+      width: 22px;
+      font-size: 1.05rem;
+    }
+
+    .patient-avatar, .tiny-avatar, .profile-avatar {
+      display: grid;
+      place-items: center;
+      color: #062018;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      font-weight: 900;
+    }
+
+    .patient-avatar {
+      width: 36px;
+      height: 36px;
+      flex: 0 0 36px;
+      border-radius: 14px;
+      font-size: 0.82rem;
+    }
+
+    .patient-info { min-width: 0; flex: 1; }
+    .patient-info strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.83rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .patient-info span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted-2);
+      font-size: 0.72rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .risk-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--primary);
+      box-shadow: 0 0 0 5px rgba(52, 211, 153, 0.10);
+    }
+    .risk-dot.attention { background: var(--yellow); box-shadow: 0 0 0 5px rgba(250,204,21,0.10); }
+    .risk-dot.critical { background: var(--red); box-shadow: 0 0 0 5px rgba(251,113,133,0.10); }
+
+    .sidebar-note {
+      margin-top: auto;
+      padding: 16px;
+      border: 1px solid rgba(52, 211, 153, 0.22);
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.13), rgba(96, 165, 250, 0.08));
+    }
+    .sidebar-note strong { display: flex; align-items: center; gap: 8px; font-size: 0.86rem; }
+    .sidebar-note p { margin-top: 8px; color: var(--muted); font-size: 0.76rem; line-height: 1.55; }
+
+    .main {
+      padding: 28px;
+      min-width: 0;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .mobile-menu-button {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+    }
+
+    .page-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(52, 211, 153, 0.25);
+      border-radius: 999px;
+      color: #bdfbea;
+      background: rgba(52, 211, 153, 0.10);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .hero-title {
+      margin-top: 14px;
+      max-width: 1010px;
+      font-size: clamp(2rem, 4vw, 4.35rem);
+      line-height: 0.98;
+      letter-spacing: -0.075em;
+    }
+    .hero-title span {
+      color: transparent;
+      background: linear-gradient(135deg, var(--primary), #d9fff3 48%, var(--primary-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      margin-top: 15px;
+      max-width: 840px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.72;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      min-width: 330px;
+    }
+
+    .status-pill, .action-button, .mini-tab, .chip-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.07);
+      color: var(--text);
+      font-weight: 800;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+      transition: 0.22s ease;
+    }
+
+    .status-pill, .action-button { min-height: 44px; padding: 10px 14px; font-size: 0.83rem; }
+    .action-button:hover, .mini-tab:hover, .chip-button:hover { transform: translateY(-2px); background: rgba(255,255,255,0.12); }
+    .action-button.primary { color: #052016; background: linear-gradient(135deg, var(--primary), var(--primary-2)); border-color: transparent; }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--primary);
+      box-shadow: 0 0 0 7px rgba(52, 211, 153, 0.12);
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(145deg, rgba(255,255,255,0.116), rgba(255,255,255,0.052));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(24px);
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at top right, rgba(52,211,153,0.15), transparent 34%);
+      opacity: 0.82;
+    }
+    .card-content { position: relative; z-index: 1; padding: 22px; }
+
+    .span-3 { grid-column: span 3; }
+    .span-4 { grid-column: span 4; }
+    .span-5 { grid-column: span 5; }
+    .span-6 { grid-column: span 6; }
+    .span-7 { grid-column: span 7; }
+    .span-8 { grid-column: span 8; }
+    .span-12 { grid-column: span 12; }
+
+    .metric-card { min-height: 170px; }
+    .metric-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .metric-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid var(--border);
+      font-size: 1.25rem;
+    }
+    .metric-label { color: var(--muted); font-size: 0.82rem; font-weight: 800; }
+    .metric-value { margin-top: 16px; font-size: 2.2rem; font-weight: 900; letter-spacing: -0.06em; }
+    .metric-value small { color: var(--muted); font-size: 0.84rem; letter-spacing: -0.02em; font-weight: 800; }
+    .metric-footer { margin-top: 10px; display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.78rem; line-height: 1.4; }
+    .trend { display: inline-flex; align-items: center; gap: 4px; color: #b8ffe9; font-weight: 900; }
+    .trend.warning { color: #fff2a8; }
+    .trend.danger { color: #ffc3cc; }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .section-header h2 { font-size: 1.25rem; letter-spacing: -0.045em; }
+    .section-header p { margin-top: 6px; color: var(--muted); font-size: 0.86rem; line-height: 1.5; }
+
+    .mini-tabs, .chips-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .mini-tab { padding: 8px 12px; color: var(--muted); font-size: 0.78rem; }
+    .mini-tab.active { color: #062018; background: linear-gradient(135deg, var(--primary), var(--primary-2)); border-color: transparent; }
+    .chip-button { padding: 8px 11px; color: var(--muted); font-size: 0.76rem; }
+    .chip-button.active { color: #062018; background: linear-gradient(135deg, var(--primary), var(--primary-2)); border-color: transparent; }
+
+    .search-filter-bar {
+      display: grid;
+      grid-template-columns: 1fr 180px 180px auto;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .input-wrap, .select-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .input-wrap i, .select-wrap i {
+      position: absolute;
+      left: 14px;
+      color: var(--muted-2);
+      pointer-events: none;
+    }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: rgba(255,255,255,0.07);
+      color: var(--text);
+      outline: none;
+      padding: 12px 14px 12px 40px;
+      transition: 0.2s ease;
+    }
+    textarea { padding: 12px 14px; min-height: 96px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { border-color: rgba(52,211,153,0.45); box-shadow: 0 0 0 4px rgba(52,211,153,0.09); }
+    select option { color: #071822; }
+
+    .chart-wrap {
+      height: 286px;
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      padding: 20px 4px 4px;
+      border-bottom: 1px solid var(--border);
+    }
+    .bar-group { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 9px; height: 100%; }
+    .bar-stack { width: 100%; max-width: 38px; height: 216px; display: flex; align-items: flex-end; justify-content: center; border-radius: 999px; background: rgba(255,255,255,0.055); overflow: hidden; border: 1px solid rgba(255,255,255,0.07); }
+    .bar { width: 100%; border-radius: 999px 999px 0 0; background: linear-gradient(180deg, var(--primary-2), var(--primary)); box-shadow: 0 -16px 40px rgba(52,211,153,0.22); transition: height 0.4s ease; }
+    .bar.blue { background: linear-gradient(180deg, #93c5fd, var(--blue)); }
+    .bar.red { background: linear-gradient(180deg, #fda4af, var(--red)); }
+    .bar.yellow { background: linear-gradient(180deg, #fde68a, var(--yellow)); }
+    .bar.purple { background: linear-gradient(180deg, #ddd6fe, var(--purple)); }
+    .bar-label { color: var(--muted-2); font-size: 0.72rem; font-weight: 900; }
+    .chart-legend { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 16px; color: var(--muted); font-size: 0.78rem; font-weight: 800; }
+    .legend-item { display: inline-flex; align-items: center; gap: 7px; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--primary); }
+    .legend-dot.blue { background: var(--blue); } .legend-dot.yellow { background: var(--yellow); } .legend-dot.red { background: var(--red); } .legend-dot.purple { background: var(--purple); }
+
+    .person-panel { display: grid; grid-template-columns: 1.05fr 1.25fr; gap: 18px; }
+    .person-profile { display: flex; flex-direction: column; gap: 18px; }
+    .profile-main { display: flex; align-items: center; gap: 16px; }
+    .profile-avatar { width: 74px; height: 74px; border-radius: 26px; font-size: 1.35rem; box-shadow: 0 18px 44px rgba(52,211,153,0.22); }
+    .profile-main h3 { font-size: 1.55rem; letter-spacing: -0.05em; }
+    .profile-main p { margin-top: 5px; color: var(--muted); font-size: 0.86rem; }
+    .profile-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag, .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border-radius: 999px;
+      font-weight: 900;
+      border: 1px solid rgba(52,211,153,0.25);
+      background: rgba(52,211,153,0.10);
+      color: #baffea;
+    }
+    .tag { padding: 8px 10px; font-size: 0.75rem; }
+    .status-badge { padding: 7px 10px; font-size: 0.72rem; }
+    .tag.warning, .status-badge.warning { color: #fff3a8; border-color: rgba(250,204,21,0.30); background: rgba(250,204,21,0.10); }
+    .tag.danger, .status-badge.danger { color: #ffc5cd; border-color: rgba(251,113,133,0.30); background: rgba(251,113,133,0.10); }
+    .tag.info, .status-badge.info { color: #cfe5ff; border-color: rgba(96,165,250,0.30); background: rgba(96,165,250,0.10); }
+
+    .daily-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .daily-metric { border: 1px solid var(--border); border-radius: 20px; padding: 16px; background: rgba(255,255,255,0.055); }
+    .daily-metric span { color: var(--muted); font-size: 0.76rem; font-weight: 800; }
+    .daily-metric strong { display: block; margin-top: 8px; font-size: 1.35rem; letter-spacing: -0.04em; }
+
+    .timeline { display: flex; flex-direction: column; gap: 12px; }
+    .timeline-item { display: grid; grid-template-columns: 82px 1fr auto; gap: 12px; align-items: center; padding: 13px; border: 1px solid var(--border); border-radius: 18px; background: rgba(255,255,255,0.052); }
+    .timeline-time { color: var(--muted-2); font-size: 0.75rem; font-weight: 900; }
+    .timeline-title strong { display: block; font-size: 0.88rem; }
+    .timeline-title span { display: block; margin-top: 4px; color: var(--muted); font-size: 0.76rem; line-height: 1.35; }
+
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 940px; }
+    th, td { padding: 15px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.075); }
+    th { color: var(--muted-2); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    td { color: var(--muted); font-size: 0.86rem; }
+    td strong { color: var(--text); }
+    .participant-cell { display: flex; align-items: center; gap: 11px; }
+    .tiny-avatar { width: 34px; height: 34px; border-radius: 13px; font-size: 0.75rem; }
+    .row-actions { display: flex; gap: 7px; }
+    .icon-action {
+      width: 34px;
+      height: 34px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.06);
+      transition: 0.2s ease;
+    }
+    .icon-action:hover { color: var(--text); background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+
+    .quality-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .quality-item { border: 1px solid var(--border); border-radius: 22px; padding: 18px; background: rgba(255,255,255,0.052); }
+    .quality-item i { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 15px; margin-bottom: 14px; background: rgba(255,255,255,0.08); border: 1px solid var(--border); font-size: 1.12rem; }
+    .quality-item strong { display: block; font-size: 1.55rem; letter-spacing: -0.05em; }
+    .quality-item span { display: block; margin-top: 5px; color: var(--muted); font-size: 0.78rem; line-height: 1.45; }
+
+    .automation-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+    .automation-card { border: 1px solid var(--border); border-radius: 22px; padding: 18px; background: rgba(255,255,255,0.052); display: flex; flex-direction: column; gap: 12px; }
+    .automation-card h3 { font-size: 0.98rem; letter-spacing: -0.03em; }
+    .automation-card p { color: var(--muted); font-size: 0.8rem; line-height: 1.55; }
+    .toggle-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; }
+    .toggle {
+      width: 52px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.08);
+      padding: 3px;
+      transition: 0.22s ease;
+    }
+    .toggle span { display: block; width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,0.75); transition: 0.22s ease; }
+    .toggle.active { background: linear-gradient(135deg, var(--primary), var(--primary-2)); border-color: transparent; }
+    .toggle.active span { transform: translateX(22px); background: #062018; }
+
+    .footer-note { margin-top: 18px; color: var(--muted-2); font-size: 0.76rem; line-height: 1.65; }
+
+    .toast-container { position: fixed; right: 22px; bottom: 22px; z-index: 60; display: flex; flex-direction: column; gap: 10px; }
+    .toast {
+      min-width: 285px;
+      max-width: 380px;
+      padding: 14px 15px;
+      border: 1px solid rgba(52,211,153,0.28);
+      border-radius: 18px;
+      background: rgba(5, 20, 30, 0.94);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      animation: toastIn 0.25s ease;
+    }
+    .toast i { color: var(--primary); margin-top: 2px; }
+    .toast strong { display: block; font-size: 0.84rem; }
+    .toast span { display: block; margin-top: 3px; color: var(--muted); font-size: 0.76rem; line-height: 1.4; }
+    @keyframes toastIn { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.58);
+      backdrop-filter: blur(8px);
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      width: min(760px, 100%);
+      max-height: min(82vh, 820px);
+      overflow: auto;
+      border: 1px solid var(--border-strong);
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(8,31,44,0.98), rgba(4,17,27,0.98));
+      box-shadow: var(--shadow);
+    }
+    .modal-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 22px; border-bottom: 1px solid var(--border); }
+    .modal-header h2 { font-size: 1.25rem; letter-spacing: -0.04em; }
+    .modal-header p { margin-top: 6px; color: var(--muted); font-size: 0.84rem; line-height: 1.5; }
+    .modal-body { padding: 22px; }
+    .modal-footer { display: flex; justify-content: flex-end; gap: 10px; padding: 18px 22px 22px; }
+    .close-button { width: 40px; height: 40px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255,255,255,0.08); color: var(--text); }
+
+    .settings-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field label { color: var(--muted); font-size: 0.78rem; font-weight: 900; }
+
+    @media (max-width: 1180px) {
+      .span-3 { grid-column: span 6; }
+      .span-4 { grid-column: span 6; }
+      .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+      .person-panel { grid-template-columns: 1fr; }
+      .quality-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .automation-grid { grid-template-columns: 1fr; }
+      .search-filter-bar { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 900px) {
+      .app-shell { grid-template-columns: 1fr; }
+      .sidebar { position: fixed; inset: 0 auto 0 0; width: min(88vw, 330px); transform: translateX(-105%); transition: transform 0.25s ease; z-index: 70; }
+      .sidebar.open { transform: translateX(0); }
+      .mobile-menu-button { display: inline-grid; place-items: center; }
+      .main { padding: 18px; }
+      .topbar { flex-direction: column; }
+      .top-actions { min-width: 0; justify-content: flex-start; }
+    }
+
+    @media (max-width: 680px) {
+      .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-12 { grid-column: span 12; }
+      .metric-card { min-height: 150px; }
+      .section-header { flex-direction: column; }
+      .mini-tabs, .chips-row { justify-content: flex-start; }
+      .daily-metrics, .quality-grid, .settings-grid, .search-filter-bar { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; }
+      .hero-title { letter-spacing: -0.06em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-icon"><i class="bi bi-activity"></i></div>
+        <div>
+          <h1>Sabiá Data Lake</h1>
+          <p>Admin Saúde Digital</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="sidebar-section-title">Menu principal</p>
+        <nav class="nav-menu" id="mainMenu">
+          <button class="nav-item active" data-section="overview"><i class="bi bi-grid-1x2-fill"></i> Visão geral</button>
+          <button class="nav-item" data-section="cardio"><i class="bi bi-heart-pulse-fill"></i> Cardio & sinais vitais</button>
+          <button class="nav-item" data-section="mobility"><i class="bi bi-person-walking"></i> Passos & mobilidade</button>
+          <button class="nav-item" data-section="sleep"><i class="bi bi-moon-stars-fill"></i> Sono & recuperação</button>
+          <button class="nav-item" data-section="alerts"><i class="bi bi-bell-fill"></i> Alertas clínicos</button>
+          <button class="nav-item" data-section="governance"><i class="bi bi-shield-lock-fill"></i> Governança LGPD</button>
+          <button class="nav-item" data-section="devices"><i class="bi bi-smartwatch"></i> Dispositivos</button>
+          <button class="nav-item" data-section="automation"><i class="bi bi-lightning-charge-fill"></i> Automações</button>
+        </nav>
+      </div>
+
+      <div>
+        <p class="sidebar-section-title">Participantes</p>
+        <div class="patient-list" id="patientList"></div>
+      </div>
+
+      <div class="sidebar-note">
+        <strong><i class="bi bi-info-circle"></i> Ambiente demonstrativo</strong>
+        <p>Todos os botões possuem interação simulada para apresentação. Em produção, conectar APIs, autenticação, consentimento, logs e autorização por perfil.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Abrir menu"><i class="bi bi-list"></i></button>
+          <div class="page-kicker"><i class="bi bi-watch"></i> Monitoramento remoto por smartwatches</div>
+          <h1 class="hero-title">Painel inteligente para <span>acompanhar saúde, rotina, adesão e risco</span> em tempo quase real.</h1>
+          <p class="hero-subtitle">Protótipo administrativo completo para demonstrar a parceiros como o Sabiá Data Lake pode integrar dados de wearables, triagem, alertas e governança em uma experiência única.</p>
+        </div>
+
+        <div class="top-actions">
+          <div class="status-pill"><span class="status-dot"></span> <span id="onlineDevicesLabel">42 dispositivos online</span></div>
+          <button class="action-button primary" id="syncButton"><i class="bi bi-arrow-repeat"></i> Sincronizar</button>
+          <button class="action-button" id="exportButton"><i class="bi bi-download"></i> Exportar</button>
+          <button class="action-button" id="settingsButton"><i class="bi bi-sliders"></i> Configurações</button>
+        </div>
+      </header>
+
+      <section class="dashboard-grid" aria-label="Indicadores gerais">
+        <article class="card metric-card span-3" data-jump="overview">
+          <div class="card-content">
+            <div class="metric-header">
+              <div><p class="metric-label">Participantes ativos</p><div class="metric-value" id="activeCount">48 <small>/ 52</small></div></div>
+              <div class="metric-icon" style="color: var(--primary)"><i class="bi bi-people-fill"></i></div>
+            </div>
+            <p class="metric-footer"><span class="trend"><i class="bi bi-arrow-up-right"></i> 92%</span> de adesão nesta semana</p>
+          </div>
+        </article>
+
+        <article class="card metric-card span-3" data-jump="cardio">
+          <div class="card-content">
+            <div class="metric-header">
+              <div><p class="metric-label">Frequência cardíaca média</p><div class="metric-value" id="avgHeart">74 <small>bpm</small></div></div>
+              <div class="metric-icon" style="color: var(--red)"><i class="bi bi-heart-pulse-fill"></i></div>
+            </div>
+            <p class="metric-footer"><span class="trend"><i class="bi bi-check-circle"></i> Estável</span> nas últimas 24h</p>
+          </div>
+        </article>
+
+        <article class="card metric-card span-3" data-jump="mobility">
+          <div class="card-content">
+            <div class="metric-header">
+              <div><p class="metric-label">Passos médios diários</p><div class="metric-value" id="avgSteps">7.842</div></div>
+              <div class="metric-icon" style="color: var(--blue)"><i class="bi bi-person-walking"></i></div>
+            </div>
+            <p class="metric-footer"><span class="trend warning"><i class="bi bi-arrow-down-right"></i> -8%</span> em relação à semana anterior</p>
+          </div>
+        </article>
+
+        <article class="card metric-card span-3" data-jump="alerts">
+          <div class="card-content">
+            <div class="metric-header">
+              <div><p class="metric-label">Alertas em acompanhamento</p><div class="metric-value" id="alertCount">6</div></div>
+              <div class="metric-icon" style="color: var(--yellow)"><i class="bi bi-bell-fill"></i></div>
+            </div>
+            <p class="metric-footer"><span class="trend danger"><i class="bi bi-exclamation-triangle"></i> 2 críticos</span> exigem revisão</p>
+          </div>
+        </article>
+
+        <article class="card span-8" id="overviewSection">
+          <div class="card-content">
+            <div class="section-header">
+              <div>
+                <h2 id="chartTitle">Tendência de atividade física</h2>
+                <p id="chartDescription">Passos médios por dia, considerando apenas dispositivos sincronizados no período.</p>
+              </div>
+              <div class="mini-tabs" id="periodTabs">
+                <button class="mini-tab active" data-period="7">7 dias</button>
+                <button class="mini-tab" data-period="30">30 dias</button>
+                <button class="mini-tab" data-period="90">90 dias</button>
+              </div>
+            </div>
+
+            <div class="chips-row" id="metricChips" style="justify-content:flex-start; margin-bottom: 6px;">
+              <button class="chip-button active" data-metric="steps"><i class="bi bi-person-walking"></i> Passos</button>
+              <button class="chip-button" data-metric="heart"><i class="bi bi-heart-pulse"></i> Cardio</button>
+              <button class="chip-button" data-metric="sleep"><i class="bi bi-moon-stars"></i> Sono</button>
+              <button class="chip-button" data-metric="spo2"><i class="bi bi-lungs"></i> SpO₂</button>
+            </div>
+
+            <div class="chart-wrap" id="mainChart"></div>
+            <div class="chart-legend" id="chartLegend"></div>
+          </div>
+        </article>
+
+        <article class="card span-4" id="governanceSection">
+          <div class="card-content">
+            <div class="section-header">
+              <div><h2>Qualidade, segurança e governança</h2><p>Controle operacional dos sinais recebidos.</p></div>
+            </div>
+            <div class="quality-grid" style="grid-template-columns: 1fr;">
+              <div class="quality-item"><i class="bi bi-cloud-check" style="color: var(--primary)"></i><strong>96,4%</strong><span>Taxa de sincronização dos dispositivos nas últimas 24 horas.</span></div>
+              <div class="quality-item"><i class="bi bi-battery-half" style="color: var(--yellow)"></i><strong>8</strong><span>Dispositivos com bateria abaixo de 25%.</span></div>
+              <div class="quality-item"><i class="bi bi-shield-check" style="color: var(--blue)"></i><strong>100%</strong><span>Registros com consentimento, trilha de auditoria e perfil de acesso.</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card span-12" id="participantPanelCard">
+          <div class="card-content">
+            <div class="section-header">
+              <div>
+                <h2>Monitoramento individual</h2>
+                <p>Clique em um participante para visualizar seus dados diários, eventos, risco e ações administrativas.</p>
+              </div>
+              <div class="mini-tabs" id="personTabs">
+                <button class="mini-tab active" data-view="today">Hoje</button>
+                <button class="mini-tab" data-view="week">Semana</button>
+                <button class="mini-tab" data-view="month">Mês</button>
+              </div>
+            </div>
+
+            <div class="person-panel">
+              <div class="person-profile">
+                <div class="profile-main">
+                  <div class="profile-avatar" id="profileAvatar">AM</div>
+                  <div>
+                    <h3 id="profileName">Ana Martins</h3>
+                    <p id="profileMeta">ID SABIÁ-001 • 68 anos • Guarapuava/PR</p>
+                  </div>
+                </div>
+                <div class="profile-tags" id="profileTags"></div>
+                <div class="chips-row" style="justify-content:flex-start;">
+                  <button class="chip-button" id="openProfileButton"><i class="bi bi-person-vcard"></i> Ver prontuário resumido</button>
+                  <button class="chip-button" id="messageButton"><i class="bi bi-chat-dots"></i> Mensagem</button>
+                  <button class="chip-button" id="alertButton"><i class="bi bi-bell"></i> Criar alerta</button>
+                  <button class="chip-button" id="reportButton"><i class="bi bi-file-earmark-medical"></i> Relatório</button>
+                </div>
+                <div class="daily-metrics" id="dailyMetrics"></div>
+              </div>
+              <div>
+                <div class="timeline" id="dailyTimeline"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card span-12" id="participantsSection">
+          <div class="card-content">
+            <div class="section-header">
+              <div>
+                <h2>Participantes monitorados</h2>
+                <p>Busca, filtros, priorização clínica e acompanhamento operacional da coleta.</p>
+              </div>
+              <div class="mini-tabs" id="statusTabs">
+                <button class="mini-tab active" data-status="all">Todos</button>
+                <button class="mini-tab" data-status="stable">Estáveis</button>
+                <button class="mini-tab" data-status="attention">Atenção</button>
+                <button class="mini-tab" data-status="critical">Críticos</button>
+              </div>
+            </div>
+
+            <div class="search-filter-bar">
+              <div class="input-wrap"><i class="bi bi-search"></i><input id="searchInput" type="search" placeholder="Buscar por nome, cidade ou ID..." /></div>
+              <div class="select-wrap"><i class="bi bi-funnel"></i><select id="cityFilter"><option value="all">Todas as cidades</option></select></div>
+              <div class="select-wrap"><i class="bi bi-battery-half"></i><select id="batteryFilter"><option value="all">Todas as baterias</option><option value="low">Bateria baixa</option><option value="ok">Bateria adequada</option></select></div>
+              <button class="action-button" id="clearFiltersButton"><i class="bi bi-x-circle"></i> Limpar</button>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Participante</th><th>Status</th><th>Última sinc.</th><th>FC média</th><th>Passos</th><th>Sono</th><th>Bateria</th><th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="participantTable"></tbody>
+              </table>
+            </div>
+            <p class="footer-note">Dados demonstrativos. Para uso real, recomenda-se autenticação institucional, criptografia, logs, consentimento informado, perfis de permissão, data lineage e pipeline seguro de ingestão.</p>
+          </div>
+        </article>
+
+        <article class="card span-6" id="alertsSection">
+          <div class="card-content">
+            <div class="section-header">
+              <div><h2>Central de alertas</h2><p>Alertas automáticos por limites clínicos, padrões de rotina e falhas de coleta.</p></div>
+              <button class="action-button" id="reviewAlertsButton"><i class="bi bi-eye"></i> Revisar alertas</button>
+            </div>
+            <div class="timeline" id="alertsTimeline"></div>
+          </div>
+        </article>
+
+        <article class="card span-6" id="devicesSection">
+          <div class="card-content">
+            <div class="section-header">
+              <div><h2>Dispositivos e conectividade</h2><p>Estado dos smartwatches, bateria, sincronização e integridade.</p></div>
+              <button class="action-button" id="pairDeviceButton"><i class="bi bi-plus-circle"></i> Parear dispositivo</button>
+            </div>
+            <div class="quality-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+              <div class="quality-item"><i class="bi bi-smartwatch" style="color: var(--primary)"></i><strong>52</strong><span>Dispositivos cadastrados no estudo.</span></div>
+              <div class="quality-item"><i class="bi bi-wifi" style="color: var(--blue)"></i><strong>42</strong><span>Online ou sincronizados nas últimas 24h.</span></div>
+              <div class="quality-item"><i class="bi bi-battery-charging" style="color: var(--yellow)"></i><strong>8</strong><span>Com bateria baixa ou atenção operacional.</span></div>
+              <div class="quality-item"><i class="bi bi-exclamation-diamond" style="color: var(--red)"></i><strong>2</strong><span>Com lacunas relevantes de coleta.</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card span-12" id="automationSection">
+          <div class="card-content">
+            <div class="section-header">
+              <div><h2>Automações de cuidado e pesquisa</h2><p>Regras simuladas para transformar dados brutos em ações, alertas e relatórios.</p></div>
+              <button class="action-button" id="newRuleButton"><i class="bi bi-plus-lg"></i> Nova regra</button>
+            </div>
+            <div class="automation-grid">
+              <div class="automation-card"><h3><i class="bi bi-heart-pulse"></i> Alerta de FC elevada</h3><p>Gera alerta quando a frequência cardíaca permanece acima do limite individual por período prolongado.</p><div class="toggle-row"><span class="status-badge">Ativa</span><button class="toggle active" data-toggle><span></span></button></div></div>
+              <div class="automation-card"><h3><i class="bi bi-person-walking"></i> Queda de mobilidade</h3><p>Detecta redução significativa de passos em comparação com o histórico individual do participante.</p><div class="toggle-row"><span class="status-badge">Ativa</span><button class="toggle active" data-toggle><span></span></button></div></div>
+              <div class="automation-card"><h3><i class="bi bi-moon-stars"></i> Sono insuficiente</h3><p>Prioriza participantes com redução recorrente de sono e possível impacto na recuperação.</p><div class="toggle-row"><span class="status-badge warning">Revisão</span><button class="toggle" data-toggle><span></span></button></div></div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <div><h2 id="modalTitle">Título</h2><p id="modalSubtitle">Descrição</p></div>
+        <button class="close-button" id="modalClose"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer" id="modalFooter"></div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script>
+    const participants = [
+      { id: "SABIÁ-001", name: "Ana Martins", initials: "AM", age: 68, city: "Guarapuava/PR", risk: "stable", status: "Estável", sync: "há 6 min", heart: 72, steps: 8240, sleep: "7h12", spo2: 97, battery: 84, device: "SW-PR-001", tags: ["Boa adesão", "Sono regular", "Sem alerta crítico"],
+        metrics: [["Frequência cardíaca", "72 bpm", "Média do dia"], ["Passos", "8.240", "Meta diária atingida"], ["Sono", "7h12", "Eficiência 86%"], ["SpO₂", "97%", "Última leitura"], ["Calorias ativas", "426 kcal", "Estimativa"], ["Tempo ativo", "58 min", "Caminhada leve"]],
+        timeline: [["07:10", "Sono finalizado", "Duração registrada de 7h12, com boa regularidade."], ["09:35", "Caminhada detectada", "Atividade leve por 18 minutos, FC média de 91 bpm."], ["12:20", "Sincronização completa", "Dados enviados com sucesso ao ambiente seguro."], ["16:45", "Meta de passos atingida", "Participante ultrapassou 8.000 passos diários."]]
+      },
+      { id: "SABIÁ-002", name: "João Ribeiro", initials: "JR", age: 74, city: "Pinhão/PR", risk: "attention", status: "Atenção", sync: "há 18 min", heart: 88, steps: 4210, sleep: "5h41", spo2: 95, battery: 42, device: "SW-PR-002", tags: ["Queda de mobilidade", "Sono reduzido", "Revisar rotina"],
+        metrics: [["Frequência cardíaca", "88 bpm", "Acima da média pessoal"], ["Passos", "4.210", "47% abaixo da meta"], ["Sono", "5h41", "Fragmentado"], ["SpO₂", "95%", "Última leitura"], ["Calorias ativas", "214 kcal", "Baixa atividade"], ["Tempo ativo", "24 min", "Abaixo do esperado"]],
+        timeline: [["06:52", "Sono finalizado", "Duração reduzida e múltiplos despertares detectados."], ["10:14", "Baixa mobilidade", "Poucos deslocamentos registrados no período da manhã."], ["14:08", "FC elevada", "Frequência média acima do padrão individual."], ["17:22", "Recomendação de contato", "Sugerida verificação com equipe responsável."]]
+      },
+      { id: "SABIÁ-003", name: "Maria Oliveira", initials: "MO", age: 71, city: "Candói/PR", risk: "critical", status: "Crítico", sync: "há 3 min", heart: 104, steps: 1860, sleep: "4h58", spo2: 93, battery: 67, device: "SW-PR-003", tags: ["Alerta crítico", "FC elevada", "Mobilidade muito baixa"],
+        metrics: [["Frequência cardíaca", "104 bpm", "Pico recorrente"], ["Passos", "1.860", "Muito abaixo da rotina"], ["Sono", "4h58", "Recuperação baixa"], ["SpO₂", "93%", "Acompanhar"], ["Calorias ativas", "102 kcal", "Baixa atividade"], ["Tempo ativo", "11 min", "Atenção imediata"]],
+        timeline: [["05:48", "Sono interrompido", "Baixa duração e recuperação insuficiente."], ["08:42", "FC elevada", "Leitura acima do limite definido para triagem."], ["11:30", "Mobilidade reduzida", "Padrão abaixo do histórico individual."], ["15:05", "Alerta crítico gerado", "Encaminhar para avaliação da equipe responsável."]]
+      },
+      { id: "SABIÁ-004", name: "Carlos Santos", initials: "CS", age: 63, city: "Guarapuava/PR", risk: "stable", status: "Estável", sync: "há 9 min", heart: 69, steps: 9350, sleep: "7h46", spo2: 98, battery: 91, device: "SW-PR-004", tags: ["Alta adesão", "Boa recuperação", "Rotina ativa"],
+        metrics: [["Frequência cardíaca", "69 bpm", "Dentro do padrão"], ["Passos", "9.350", "Acima da meta"], ["Sono", "7h46", "Eficiência 90%"], ["SpO₂", "98%", "Última leitura"], ["Calorias ativas", "512 kcal", "Atividade consistente"], ["Tempo ativo", "71 min", "Bom desempenho"]],
+        timeline: [["06:40", "Sono finalizado", "Boa duração e poucos despertares."], ["08:20", "Atividade moderada", "Caminhada contínua por 32 minutos."], ["13:14", "Sincronização completa", "Dados recebidos sem lacunas."], ["18:05", "Meta superada", "Rotina diária acima do padrão populacional."]]
+      },
+      { id: "SABIÁ-005", name: "Lucia Almeida", initials: "LA", age: 77, city: "Reserva do Iguaçu/PR", risk: "attention", status: "Atenção", sync: "há 31 min", heart: 81, steps: 3920, sleep: "6h08", spo2: 96, battery: 18, device: "SW-PR-005", tags: ["Bateria baixa", "Atividade baixa", "Acompanhar adesão"],
+        metrics: [["Frequência cardíaca", "81 bpm", "Levemente elevada"], ["Passos", "3.920", "Abaixo da meta"], ["Sono", "6h08", "Regular"], ["SpO₂", "96%", "Última leitura"], ["Calorias ativas", "198 kcal", "Baixa atividade"], ["Tempo ativo", "19 min", "Atenção"]],
+        timeline: [["07:02", "Sono finalizado", "Duração regular, mas com interrupções."], ["09:18", "Bateria baixa", "Dispositivo abaixo de 25%."], ["12:44", "Sincronização parcial", "Algumas leituras ainda pendentes."], ["16:10", "Atividade abaixo da rotina", "Recomendada checagem de adesão."]]
+      }
+    ];
+
+    const charts = {
+      steps: { title: "Tendência de atividade física", desc: "Passos médios por dia, considerando apenas dispositivos sincronizados no período.", values: [6900,7420,8010,7680,8560,8120,7842], labels: ["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"], color: "", legend: ["Passos médios", "Meta: 8.000", "Atenção: queda de rotina"] },
+      heart: { title: "Frequência cardíaca média", desc: "Média populacional diária em batimentos por minuto.", values: [76,74,78,75,77,73,74], labels: ["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"], color: "red", legend: ["BPM médio", "Limite individual", "Eventos de atenção"] },
+      sleep: { title: "Sono e recuperação", desc: "Horas médias de sono registradas por smartwatch.", values: [6.4,6.8,7.1,6.2,7.4,7.0,6.7], labels: ["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"], color: "purple", legend: ["Horas de sono", "Meta: 7h", "Sono fragmentado"] },
+      spo2: { title: "Saturação média de oxigênio", desc: "Leituras médias de SpO₂ para acompanhamento remoto.", values: [96,97,96,95,97,98,96], labels: ["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"], color: "blue", legend: ["SpO₂ média", "Faixa esperada", "Leituras de atenção"] }
+    };
+
+    let selectedParticipant = 0;
+    let selectedStatus = "all";
+    let selectedMetric = "steps";
+    let selectedPeriod = "7";
+
+    const $ = (id) => document.getElementById(id);
+    const fmt = (v) => Number(v).toLocaleString("pt-BR");
+
+    function riskClass(risk) { return risk === "critical" ? "danger" : risk === "attention" ? "warning" : ""; }
+    function riskDotClass(risk) { return risk === "critical" ? "critical" : risk === "attention" ? "attention" : ""; }
+
+    function toast(title, text, icon = "bi-check-circle") {
+      const el = document.createElement("div");
+      el.className = "toast";
+      el.innerHTML = `<i class="bi ${icon}"></i><div><strong>${title}</strong><span>${text}</span></div>`;
+      $("toastContainer").appendChild(el);
+      setTimeout(() => el.remove(), 3800);
+    }
+
+    function openModal(title, subtitle, body, footer = "") {
+      $("modalTitle").textContent = title;
+      $("modalSubtitle").textContent = subtitle;
+      $("modalBody").innerHTML = body;
+      $("modalFooter").innerHTML = footer || `<button class="action-button primary" onclick="closeModal()"><i class="bi bi-check-lg"></i> Entendi</button>`;
+      $("modalBackdrop").classList.add("open");
+    }
+    function closeModal() { $("modalBackdrop").classList.remove("open"); }
+
+    function scrollToSection(id) {
+      const map = { overview: "overviewSection", cardio: "overviewSection", mobility: "overviewSection", sleep: "overviewSection", alerts: "alertsSection", governance: "governanceSection", devices: "devicesSection", automation: "automationSection" };
+      document.getElementById(map[id] || "overviewSection").scrollIntoView({ behavior: "smooth", block: "start" });
+      if (["cardio","mobility","sleep"].includes(id)) setMetric(id === "cardio" ? "heart" : id === "mobility" ? "steps" : "sleep");
+      if (window.innerWidth <= 900) $("sidebar").classList.remove("open");
+    }
+
+    function renderSidebar() {
+      $("patientList").innerHTML = participants.map((p, i) => `
+        <button class="patient-item ${i === selectedParticipant ? "active" : ""}" onclick="selectParticipant(${i})">
+          <span class="patient-avatar">${p.initials}</span><span class="patient-info"><strong>${p.name}</strong><span>${p.id} • ${p.status}</span></span><span class="risk-dot ${riskDotClass(p.risk)}"></span>
+        </button>`).join("");
+    }
+
+    function getFilteredParticipants() {
+      const q = $("searchInput")?.value?.toLowerCase() || "";
+      const city = $("cityFilter")?.value || "all";
+      const battery = $("batteryFilter")?.value || "all";
+      return participants.filter(p => {
+        const statusOk = selectedStatus === "all" || p.risk === selectedStatus;
+        const queryOk = !q || `${p.name} ${p.city} ${p.id}`.toLowerCase().includes(q);
+        const cityOk = city === "all" || p.city === city;
+        const batteryOk = battery === "all" || (battery === "low" ? p.battery < 25 : p.battery >= 25);
+        return statusOk && queryOk && cityOk && batteryOk;
+      });
+    }
+
+    function renderTable() {
+      const rows = getFilteredParticipants();
+      $("participantTable").innerHTML = rows.map(p => {
+        const index = participants.indexOf(p);
+        return `<tr>
+          <td onclick="selectParticipant(${index})" style="cursor:pointer;"><div class="participant-cell"><span class="tiny-avatar">${p.initials}</span><div><strong>${p.name}</strong><br><span>${p.id} • ${p.age} anos • ${p.city}</span></div></div></td>
+          <td><span class="status-badge ${riskClass(p.risk)}">${p.status}</span></td>
+          <td>${p.sync}</td><td><strong>${p.heart} bpm</strong></td><td>${fmt(p.steps)}</td><td>${p.sleep}</td><td>${p.battery}%</td>
+          <td><div class="row-actions"><button class="icon-action" title="Ver" onclick="selectParticipant(${index})"><i class="bi bi-eye"></i></button><button class="icon-action" title="Mensagem" onclick="quickMessage(${index})"><i class="bi bi-chat-dots"></i></button><button class="icon-action" title="Alerta" onclick="quickAlert(${index})"><i class="bi bi-bell"></i></button><button class="icon-action" title="Relatório" onclick="quickReport(${index})"><i class="bi bi-file-earmark-text"></i></button></div></td>
+        </tr>`;
+      }).join("") || `<tr><td colspan="8">Nenhum participante encontrado com os filtros atuais.</td></tr>`;
+    }
+
+    function renderCityOptions() {
+      const cities = [...new Set(participants.map(p => p.city))];
+      $("cityFilter").innerHTML = `<option value="all">Todas as cidades</option>` + cities.map(c => `<option value="${c}">${c}</option>`).join("");
+    }
+
+    function renderChart() {
+      const c = charts[selectedMetric];
+      $("chartTitle").textContent = c.title + ` • ${selectedPeriod} dias`;
+      $("chartDescription").textContent = c.desc;
+      const max = Math.max(...c.values);
+      $("mainChart").innerHTML = c.values.map((value, index) => {
+        const height = Math.max(12, Math.round((value / max) * 100));
+        return `<div class="bar-group" title="${c.labels[index]}: ${value}"><div class="bar-stack"><div class="bar ${c.color}" style="height:${height}%"></div></div><span class="bar-label">${c.labels[index]}</span></div>`;
+      }).join("");
+      const colors = ["", selectedMetric === "heart" ? "red" : "blue", "yellow"];
+      $("chartLegend").innerHTML = c.legend.map((l, i) => `<span class="legend-item"><span class="legend-dot ${colors[i]}"></span>${l}</span>`).join("");
+    }
+
+    function setMetric(metric) {
+      selectedMetric = metric;
+      document.querySelectorAll("#metricChips .chip-button").forEach(b => b.classList.toggle("active", b.dataset.metric === metric));
+      renderChart();
+    }
+
+    function renderParticipant() {
+      const p = participants[selectedParticipant];
+      $("profileAvatar").textContent = p.initials;
+      $("profileName").textContent = p.name;
+      $("profileMeta").textContent = `${p.id} • ${p.age} anos • ${p.city} • Dispositivo ${p.device}`;
+      $("profileTags").innerHTML = p.tags.map((tag, i) => `<span class="tag ${p.risk === "critical" && i === 0 ? "danger" : p.risk === "attention" ? "warning" : ""}"><i class="bi bi-check2-circle"></i>${tag}</span>`).join("");
+      $("dailyMetrics").innerHTML = p.metrics.map(([label, value, desc]) => `<div class="daily-metric"><span>${label}</span><strong>${value}</strong><span>${desc}</span></div>`).join("");
+      $("dailyTimeline").innerHTML = p.timeline.map(([time, title, desc]) => `<div class="timeline-item"><div class="timeline-time">${time}</div><div class="timeline-title"><strong>${title}</strong><span>${desc}</span></div><div><span class="status-badge ${riskClass(p.risk)}">${p.status}</span></div></div>`).join("");
+    }
+
+    function selectParticipant(index) {
+      selectedParticipant = index;
+      renderSidebar();
+      renderParticipant();
+      $("participantPanelCard").scrollIntoView({ behavior: "smooth", block: "start" });
+      if (window.innerWidth <= 900) $("sidebar").classList.remove("open");
+    }
+
+    function renderAlerts() {
+      const alerts = [
+        ["Crítico", "Maria Oliveira", "FC elevada persistente e mobilidade muito baixa nas últimas horas.", "danger"],
+        ["Atenção", "João Ribeiro", "Queda de passos e sono reduzido em relação ao padrão individual.", "warning"],
+        ["Operacional", "Lucia Almeida", "Bateria abaixo de 25%, risco de perda de coleta.", "info"],
+        ["Governança", "Sistema", "Todos os registros recentes possuem consentimento associado.", ""]
+      ];
+      $("alertsTimeline").innerHTML = alerts.map((a, idx) => `<div class="timeline-item"><div class="timeline-time">#${idx+1}</div><div class="timeline-title"><strong>${a[1]}</strong><span>${a[2]}</span></div><div><span class="status-badge ${a[3]}">${a[0]}</span></div></div>`).join("");
+    }
+
+    function quickMessage(i) {
+      const p = participants[i];
+      openModal("Enviar mensagem", `Contato simulado com ${p.name}.`, `<div class="field"><label>Mensagem</label><textarea>Olá, ${p.name}. Identificamos uma alteração em seus dados recentes. A equipe responsável poderá entrar em contato para uma checagem de rotina.</textarea></div>`, `<button class="action-button" onclick="closeModal()">Cancelar</button><button class="action-button primary" onclick="toast('Mensagem registrada', 'A mensagem foi simulada no histórico do participante.', 'bi-chat-dots'); closeModal();">Enviar simulação</button>`);
+    }
+    function quickAlert(i) {
+      const p = participants[i];
+      openModal("Criar alerta manual", `Registro de alerta para ${p.name}.`, `<div class="settings-grid"><div class="field"><label>Tipo</label><select><option>Clínico</option><option>Operacional</option><option>Adesão</option></select></div><div class="field"><label>Prioridade</label><select><option>Atenção</option><option>Crítico</option><option>Baixo</option></select></div></div><br><div class="field"><label>Observação</label><textarea>Registrar observação da equipe sobre o participante.</textarea></div>`, `<button class="action-button" onclick="closeModal()">Cancelar</button><button class="action-button primary" onclick="toast('Alerta criado', 'Alerta demonstrativo adicionado ao painel.', 'bi-bell'); closeModal();">Salvar alerta</button>`);
+    }
+    function quickReport(i) {
+      const p = participants[i];
+      openModal("Relatório individual", `Resumo demonstrativo de ${p.name}.`, `<div class="quality-grid" style="grid-template-columns: repeat(2,minmax(0,1fr));"><div class="quality-item"><i class="bi bi-heart-pulse" style="color: var(--red)"></i><strong>${p.heart} bpm</strong><span>Frequência cardíaca média.</span></div><div class="quality-item"><i class="bi bi-person-walking" style="color: var(--blue)"></i><strong>${fmt(p.steps)}</strong><span>Passos registrados hoje.</span></div><div class="quality-item"><i class="bi bi-moon-stars" style="color: var(--purple)"></i><strong>${p.sleep}</strong><span>Tempo de sono.</span></div><div class="quality-item"><i class="bi bi-lungs" style="color: var(--primary)"></i><strong>${p.spo2}%</strong><span>Última média de SpO₂.</span></div></div>`, `<button class="action-button" onclick="toast('PDF simulado', 'Em produção, esta ação geraria um PDF ou CSV.', 'bi-file-earmark-pdf'); closeModal();">Gerar PDF</button><button class="action-button primary" onclick="closeModal()">Fechar</button>`);
+    }
+
+    function setupEvents() {
+      $("mobileMenuButton").addEventListener("click", () => $("sidebar").classList.toggle("open"));
+      $("modalClose").addEventListener("click", closeModal);
+      $("modalBackdrop").addEventListener("click", (e) => { if (e.target.id === "modalBackdrop") closeModal(); });
+
+      document.querySelectorAll("#mainMenu .nav-item").forEach(btn => btn.addEventListener("click", () => {
+        document.querySelectorAll("#mainMenu .nav-item").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        scrollToSection(btn.dataset.section);
+      }));
+
+      document.querySelectorAll("#metricChips .chip-button").forEach(btn => btn.addEventListener("click", () => setMetric(btn.dataset.metric)));
+      document.querySelectorAll("#periodTabs .mini-tab").forEach(btn => btn.addEventListener("click", () => { selectedPeriod = btn.dataset.period; document.querySelectorAll("#periodTabs .mini-tab").forEach(b => b.classList.remove("active")); btn.classList.add("active"); renderChart(); toast("Período atualizado", `Visualização alterada para ${selectedPeriod} dias.`, "bi-calendar-range"); }));
+      document.querySelectorAll("#personTabs .mini-tab").forEach(btn => btn.addEventListener("click", () => { document.querySelectorAll("#personTabs .mini-tab").forEach(b => b.classList.remove("active")); btn.classList.add("active"); toast("Janela individual alterada", `Dados exibidos para: ${btn.textContent}.`, "bi-clock-history"); }));
+      document.querySelectorAll("#statusTabs .mini-tab").forEach(btn => btn.addEventListener("click", () => { selectedStatus = btn.dataset.status; document.querySelectorAll("#statusTabs .mini-tab").forEach(b => b.classList.remove("active")); btn.classList.add("active"); renderTable(); }));
+
+      ["searchInput", "cityFilter", "batteryFilter"].forEach(id => $(id).addEventListener(id === "searchInput" ? "input" : "change", renderTable));
+      $("clearFiltersButton").addEventListener("click", () => { $("searchInput").value = ""; $("cityFilter").value = "all"; $("batteryFilter").value = "all"; selectedStatus = "all"; document.querySelectorAll("#statusTabs .mini-tab").forEach(b => b.classList.toggle("active", b.dataset.status === "all")); renderTable(); toast("Filtros limpos", "A tabela voltou a exibir todos os participantes.", "bi-x-circle"); });
+
+      $("syncButton").addEventListener("click", () => { $("onlineDevicesLabel").textContent = "Sincronizando..."; toast("Sincronização iniciada", "Coletando dados simulados dos smartwatches.", "bi-arrow-repeat"); setTimeout(() => { $("onlineDevicesLabel").textContent = "44 dispositivos online"; toast("Sincronização concluída", "Novos registros foram incorporados ao painel demonstrativo.", "bi-cloud-check"); }, 900); });
+      $("exportButton").addEventListener("click", () => openModal("Exportar dados", "Escolha o formato demonstrativo para apresentar aos parceiros.", `<div class="settings-grid"><button class="action-button" onclick="toast('CSV preparado', 'Exportação CSV simulada.', 'bi-filetype-csv'); closeModal();"><i class="bi bi-filetype-csv"></i> CSV</button><button class="action-button" onclick="toast('PDF preparado', 'Relatório PDF simulado.', 'bi-file-earmark-pdf'); closeModal();"><i class="bi bi-file-earmark-pdf"></i> PDF</button><button class="action-button" onclick="toast('JSON preparado', 'Exportação JSON simulada.', 'bi-braces'); closeModal();"><i class="bi bi-braces"></i> JSON</button><button class="action-button" onclick="toast('Dashboard compartilhado', 'Link seguro simulado criado.', 'bi-link-45deg'); closeModal();"><i class="bi bi-link-45deg"></i> Link seguro</button></div>`));
+      $("settingsButton").addEventListener("click", () => openModal("Configurações do painel", "Ajustes simulados para limites, privacidade e visualização.", `<div class="settings-grid"><div class="field"><label>Limite FC atenção</label><input value="90 bpm"></div><div class="field"><label>Limite FC crítico</label><input value="105 bpm"></div><div class="field"><label>Meta de passos</label><input value="8000"></div><div class="field"><label>Janela de sincronização</label><select><option>24 horas</option><option>12 horas</option><option>7 dias</option></select></div></div><br><div class="field"><label>Mensagem de privacidade</label><textarea>Exibir apenas dados necessários conforme perfil de acesso e finalidade do projeto.</textarea></div>`, `<button class="action-button" onclick="closeModal()">Cancelar</button><button class="action-button primary" onclick="toast('Configurações salvas', 'Os parâmetros foram atualizados no protótipo.', 'bi-sliders'); closeModal();">Salvar</button>`));
+
+      $("openProfileButton").addEventListener("click", () => quickReport(selectedParticipant));
+      $("messageButton").addEventListener("click", () => quickMessage(selectedParticipant));
+      $("alertButton").addEventListener("click", () => quickAlert(selectedParticipant));
+      $("reportButton").addEventListener("click", () => quickReport(selectedParticipant));
+      $("reviewAlertsButton").addEventListener("click", () => openModal("Revisão de alertas", "Fila demonstrativa de priorização.", $("alertsTimeline").innerHTML, `<button class="action-button" onclick="toast('Alertas atribuídos', 'A fila foi atribuída à equipe responsável.', 'bi-person-check'); closeModal();">Atribuir equipe</button><button class="action-button primary" onclick="closeModal()">Fechar</button>`));
+      $("pairDeviceButton").addEventListener("click", () => openModal("Parear dispositivo", "Cadastro simulado de smartwatch.", `<div class="settings-grid"><div class="field"><label>ID do dispositivo</label><input value="SW-PR-006"></div><div class="field"><label>Participante</label><select>${participants.map(p => `<option>${p.name}</option>`).join("")}</select></div><div class="field"><label>Modelo</label><input value="Smartwatch Health Pro"></div><div class="field"><label>Status inicial</label><select><option>Ativo</option><option>Em teste</option></select></div></div>`, `<button class="action-button" onclick="closeModal()">Cancelar</button><button class="action-button primary" onclick="toast('Dispositivo pareado', 'Novo smartwatch simulado vinculado ao participante.', 'bi-smartwatch'); closeModal();">Parear</button>`));
+      $("newRuleButton").addEventListener("click", () => openModal("Nova regra de automação", "Configure uma regra demonstrativa de cuidado ou pesquisa.", `<div class="settings-grid"><div class="field"><label>Nome da regra</label><input value="Alerta de queda brusca de passos"></div><div class="field"><label>Prioridade</label><select><option>Atenção</option><option>Crítico</option><option>Informativo</option></select></div></div><br><div class="field"><label>Condição</label><textarea>Se passos do dia forem 50% menores que a média individual dos últimos 7 dias, gerar alerta.</textarea></div>`, `<button class="action-button" onclick="closeModal()">Cancelar</button><button class="action-button primary" onclick="toast('Regra criada', 'Automação adicionada ao protótipo.', 'bi-lightning-charge'); closeModal();">Criar regra</button>`));
+      document.querySelectorAll("[data-toggle]").forEach(t => t.addEventListener("click", () => { t.classList.toggle("active"); toast("Automação atualizada", t.classList.contains("active") ? "Regra ativada." : "Regra pausada.", "bi-lightning-charge"); }));
+
+      document.querySelectorAll("[data-jump]").forEach(card => card.addEventListener("click", () => scrollToSection(card.dataset.jump)));
+    }
+
+    function init() {
+      renderCityOptions();
+      renderSidebar();
+      renderTable();
+      renderChart();
+      renderParticipant();
+      renderAlerts();
+      setupEvents();
+    }
+
+    init();
+  </script>
+</body>
+</html>

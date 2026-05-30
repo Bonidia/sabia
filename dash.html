@@ -132,12 +132,12 @@
                         <div class="metric-icon">
                             <i class="bi bi-people"></i>
                         </div>
-                        <div class="metric-number">INSERIR</div>
+                        <div class="metric-number">395.078</div>
                         <div class="metric-label">
-                            Pessoas ou pacientes identificados nas bases recebidas
+                            Registros de pessoas ou pacientes
                         </div>
-                        <span class="metric-status status-info">
-                            <i class="bi bi-hourglass-split"></i> Em consolidação
+                        <span class="metric-status status-success">
+                            <i class="bi bi-map"></i> Mapeamento inicial
                         </span>
                     </div>
                 </div>
@@ -147,12 +147,12 @@
                         <div class="metric-icon">
                             <i class="bi bi-file-medical"></i>
                         </div>
-                        <div class="metric-number">INSERIR</div>
+                        <div class="metric-number">7.011.805</div>
                         <div class="metric-label">
-                            Exames, laudos ou registros clínicos disponíveis
+                            Registros clínicos/diagnósticos
                         </div>
-                        <span class="metric-status status-info">
-                            <i class="bi bi-database-check"></i> Aguardando carga
+                        <span class="metric-status status-success">
+                            <i class="bi bi-map"></i> Mapeamento inicial
                         </span>
                     </div>
                 </div>
@@ -162,12 +162,12 @@
                         <div class="metric-icon">
                             <i class="bi bi-folder2-open"></i>
                         </div>
-                        <div class="metric-number">INSERIR</div>
+                        <div class="metric-number">2.958.532</div>
                         <div class="metric-label">
-                            Arquivos, planilhas ou conjuntos de dados recebidos
+                            Exames registrados
                         </div>
-                        <span class="metric-status status-warning">
-                            <i class="bi bi-tools"></i> Em organização
+                        <span class="metric-status status-success">
+                            <i class="bi bi-map"></i> Mapeamento inicial
                         </span>
                     </div>
                 </div>
@@ -177,7 +177,24 @@
                         <div class="metric-icon">
                             <i class="bi bi-diagram-3"></i>
                         </div>
-                        <div class="metric-number">INSERIR</div>
+                        <div class="metric-number">+80</div>
+                        <div class="metric-label">
+                            Bases de dados mapeadas
+                        </div>
+                        <span class="metric-status status-success">
+                            <i class="bi bi-map"></i> Mapeamento inicial
+                        </span>
+                    </div>
+                </div>
+            
+            <!--</div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="metric-card">
+                        <div class="metric-icon">
+                            <i class="bi bi-diagram-3"></i>
+                        </div>
+                        <div class="metric-number">+80</div>
                         <div class="metric-label">
                             Bases de dados mapeadas para futura integração
                         </div>
@@ -185,71 +202,7 @@
                             <i class="bi bi-map"></i> Mapeamento inicial
                         </span>
                     </div>
-                </div>
-
-            </div>
-
-            <div class="row g-4 mt-2">
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="metric-card">
-                        <div class="metric-icon">
-                            <i class="bi bi-hospital"></i>
-                        </div>
-                        <div class="metric-number">INSERIR</div>
-                        <div class="metric-label">
-                            Instituições, setores ou parceiros envolvidos
-                        </div>
-                        <span class="metric-status status-success">
-                            <i class="bi bi-building"></i> Rede em formação
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="metric-card">
-                        <div class="metric-icon">
-                            <i class="bi bi-layers"></i>
-                        </div>
-                        <div class="metric-number">3</div>
-                        <div class="metric-label">
-                            Camadas previstas: Bronze, Prata e Ouro
-                        </div>
-                        <span class="metric-status status-success">
-                            <i class="bi bi-check-circle"></i> Arquitetura definida
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="metric-card">
-                        <div class="metric-icon">
-                            <i class="bi bi-shield-lock"></i>
-                        </div>
-                        <div class="metric-number">LGPD</div>
-                        <div class="metric-label">
-                            Governança e proteção de dados sensíveis em saúde
-                        </div>
-                        <span class="metric-status status-warning">
-                            <i class="bi bi-file-earmark-lock"></i> Em documentação
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="metric-card">
-                        <div class="metric-icon">
-                            <i class="bi bi-cpu"></i>
-                        </div>
-                        <div class="metric-number">IA</div>
-                        <div class="metric-label">
-                            Ambiente preparado para futuras análises e modelos inteligentes
-                        </div>
-                        <span class="metric-status status-info">
-                            <i class="bi bi-lightning"></i> Em preparação
-                        </span>
-                    </div>
-                </div>
+                </div>-->
 
             </div>
 
@@ -817,98 +770,69 @@
     </section>
     <!-- Dados End -->
 
-
-    <!-- Resumo dos Dados Start -->
     <section id="resumo-dados" class="container-xxl py-5">
         <div class="container py-4">
-
-            <div class="text-center mb-5">
-                <span class="section-kicker">
-                    <i class="bi bi-table"></i> Resumo dos Dados Recebidos
-                </span>
-                <br><br>
-                <h2>Tabela de acompanhamento das bases</h2>
-                <p class="section-lead mx-auto">
-                    Esta tabela pode ser atualizada manualmente conforme novas bases forem recebidas, processadas,
-                    validadas ou integradas ao ambiente do Data Lake.
-                </p>
-            </div>
-
-            <div class="table-responsive">
-                <table class="data-summary-table">
-                    <thead>
-                        <tr>
-                            <th>Tipo de dado</th>
-                            <th>Quantidade atual</th>
-                            <th>Origem</th>
-                            <th>Status</th>
-                            <th>Observação</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>Pessoas / Pacientes</td>
-                            <td>INSERIR NÚMERO</td>
-                            <td>Base institucional / parceiros</td>
-                            <td><span class="status-pill warning">Em validação</span></td>
-                            <td>Conferir duplicidades, identificadores e critérios de anonimização.</td>
-                        </tr>
-
-                        <tr>
-                            <td>Exames</td>
-                            <td>INSERIR NÚMERO</td>
-                            <td>Laboratórios / sistemas parceiros</td>
-                            <td><span class="status-pill info">Em organização</span></td>
-                            <td>Separar por tipo, data, unidade e vínculo com paciente.</td>
-                        </tr>
-
-                        <tr>
-                            <td>Tipos de exames</td>
-                            <td>INSERIR NÚMERO</td>
-                            <td>Base laboratorial</td>
-                            <td><span class="status-pill info">Mapeamento inicial</span></td>
-                            <td>Classificar por categoria clínica, laboratorial, imagem ou genômica.</td>
-                        </tr>
-
-                        <tr>
-                            <td>Arquivos recebidos</td>
-                            <td>INSERIR NÚMERO</td>
-                            <td>Planilhas, bancos ou exportações</td>
-                            <td><span class="status-pill success">Mapeado</span></td>
-                            <td>Registrar formato, tamanho, origem e responsável pelo envio.</td>
-                        </tr>
-
-                        <tr>
-                            <td>Bases mapeadas</td>
-                            <td>INSERIR NÚMERO</td>
-                            <td>Instituições parceiras</td>
-                            <td><span class="status-pill info">Mapeamento inicial</span></td>
-                            <td>Definir prioridade de integração e critérios de qualidade.</td>
-                        </tr>
-
-                        <tr>
-                            <td>Instituições envolvidas</td>
-                            <td>INSERIR NÚMERO</td>
-                            <td>Rede Sabiá Data Lake</td>
-                            <td><span class="status-pill success">Em articulação</span></td>
-                            <td>Formalizar parcerias, responsabilidades e fluxos de acesso.</td>
-                        </tr>
-
-                        <tr>
-                            <td>Documentos de governança</td>
-                            <td>INSERIR NÚMERO</td>
-                            <td>Equipe Sabiá</td>
-                            <td><span class="status-pill warning">Em construção</span></td>
-                            <td>Termos, políticas, formulários, fluxos e documentos institucionais.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
+        <div class="text-center mb-5">
+            <span class="section-kicker">
+                <i class="bi bi-table"></i> Resumo dos Dados
+            </span>
+            <br><br>
+            <h2>Tabela de acompanhamento</h2>
+            <p class="section-lead mx-auto">
+                Esta tabela apresenta uma síntese inicial dos dados já mapeados para o Sabiá Data Lake, considerando cadastros, exames, municípios e arquivos recebidos. Os números serão atualizados conforme novas bases forem recebidas, validadas e integradas ao ambiente do projeto.
+            </p>
         </div>
+
+        <div class="table-responsive">
+            <table class="data-summary-table">
+                <thead>
+                    <tr>
+                        <th>Tipo de dado</th>
+                        <th>Quantidade atual</th>
+                        <th>Origem</th>
+                        <th>Status</th>
+                        <th>Observação</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Pessoas / Pacientes</td>
+                        <td>395.078</td>
+                        <td>Base FastMedic</td>
+                        <td><span class="status-pill warning">Em validação</span></td>
+                        <td>Quantidade inicial de cadastros identificados. Ainda será validado duplicidades, identificadores e critérios de anonimização.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Exames</td>
+                        <td>7.011.805</td>
+                        <td>Registros clínicos/diagnósticos</td>
+                        <td><span class="status-pill info">Em organização</span></td>
+                        <td>Total inicial de registros clínicos/diagnósticos na base.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Exames</td>
+                        <td>2.958.532</td>
+                        <td>Exames registrados</td>
+                        <td><span class="status-pill info">Mapeamento inicial</span></td>
+                        <td>Exames que possuem associação com códigos CID, permitindo análises clínicas, epidemiológicas e territoriais.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Municípios mapeados</td>
+                        <td>824</td>
+                        <td>Abrangência territorial</td>
+                        <td><span class="status-pill success">Mapeado</span></td>
+                        <td>Municípios identificados nos dados, úteis para análises regionais, distribuição territorial e estudos populacionais.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
     </section>
-    <!-- Resumo dos Dados End -->
 
 
     <!-- Status de Implantação Start -->

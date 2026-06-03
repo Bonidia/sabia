@@ -600,3 +600,37 @@ h5.mb3 {
 .tl-title {
   color: rgba(24,29,56,.85);
 }
+
+/* ===== Mesmo botão Painel Vivo no desktop e mobile ===== */
+
+.navbar .painel-vivo {
+    height: 75px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: #ffffff !important;
+    border-radius: 0;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Ajuste no mobile */
+@media (max-width: 991.98px) {
+    .navbar .painel-vivo {
+        width: 100%;
+        height: auto !important;
+        padding: 14px 18px !important;
+        margin-top: 12px;
+    }
+
+    .navbar-light a.btn {
+        height: auto !important;
+    }
+
+    .navbar .navbar-collapse {
+        max-height: calc(100vh - 75px);
+        overflow-y: auto;
+    }
+}

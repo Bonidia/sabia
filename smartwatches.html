@@ -360,8 +360,6 @@
           <button class="nav-item" data-section="participants"><i class="bi bi-people-fill"></i> Participantes</button>
           <button class="nav-item" data-section="alerts"><i class="bi bi-bell-fill"></i> Alertas clínicos</button>
           <button class="nav-item" data-section="devices"><i class="bi bi-smartwatch"></i> Dispositivos</button>
-          <button class="nav-item" data-section="governance"><i class="bi bi-shield-lock-fill"></i> Governança LGPD</button>
-          <button class="nav-item" data-section="roadmap"><i class="bi bi-map-fill"></i> Implantação</button>
         </nav>
       </div>
 
@@ -372,7 +370,7 @@
 
       <div class="sidebar-note">
         <strong><i class="bi bi-info-circle"></i> Ambiente demonstrativo</strong>
-        <p>Protótipo visual para parceiros. Em produção, a plataforma deve operar com APIs, autenticação, consentimento, LGPD, auditoria, validação clínica e governança institucional.</p>
+        <p>Protótipo visual para parceiros. Em produção, a plataforma irá operar com APIs, autenticação, consentimento, LGPD, auditoria, validação clínica e governança institucional.</p>
       </div>
     </aside>
 
@@ -553,42 +551,6 @@
           </div>
         </article>
 
-        <article class="card span-12" id="governanceSection">
-          <div class="card-content">
-            <div class="section-header"><div><p class="section-kicker">Governança, LGPD e confiança</p><h2>Camada institucional para uso responsável dos dados</h2><p>Uma página que impressiona precisa deixar claro que o valor do sistema não está só no dashboard, mas também na governança, no controle de acesso e na rastreabilidade.</p></div></div>
-            <div class="governance-grid">
-              <div class="governance-item"><i class="bi bi-person-check" style="color: var(--primary)"></i><h3>Consentimento e finalidade</h3><p>Cada coleta deve estar associada a consentimento, finalidade, projeto, versão do termo e escopo de uso.</p><ul><li>Termo de consentimento</li><li>Finalidade da coleta</li><li>Revogação e controle de status</li></ul></div>
-              <div class="governance-item"><i class="bi bi-key-fill" style="color: var(--blue)"></i><h3>Perfis de acesso</h3><p>Visualização por função: gestor, equipe de saúde, pesquisador, administrador técnico e auditor.</p><ul><li>Menor privilégio</li><li>Acesso por necessidade</li><li>Dados sensíveis protegidos</li></ul></div>
-              <div class="governance-item"><i class="bi bi-clipboard-data" style="color: var(--yellow)"></i><h3>Auditoria e rastreabilidade</h3><p>Logs de acesso, exportação, visualização, alteração de alertas, pareamento e geração de relatórios.</p><ul><li>Trilha de auditoria</li><li>Data lineage</li><li>Monitoramento de uso indevido</li></ul></div>
-            </div>
-          </div>
-        </article>
-
-        <article class="card span-12">
-          <div class="card-content">
-            <div class="section-header"><div><p class="section-kicker">Quem usa a plataforma</p><h2>Perfis de usuário e valor para cada parceiro</h2><p>A aplicação pode ser apresentada para universidades, hospitais, secretarias de saúde, pesquisadores e equipes técnicas com mensagens específicas.</p></div></div>
-            <div class="persona-grid">
-              <div class="persona-card"><i class="bi bi-building" style="color: var(--primary)"></i><h3>Gestor institucional</h3><p>Acompanha indicadores gerais, cobertura, adesão, operação e impacto do programa.</p></div>
-              <div class="persona-card"><i class="bi bi-hospital" style="color: var(--red)"></i><h3>Equipe de saúde</h3><p>Visualiza alertas, evolução individual e relatórios de acompanhamento.</p></div>
-              <div class="persona-card"><i class="bi bi-mortarboard" style="color: var(--blue)"></i><h3>Pesquisador</h3><p>Acessa dados aprovados, anonimizados ou pseudonimizados conforme ética e governança.</p></div>
-              <div class="persona-card"><i class="bi bi-router" style="color: var(--yellow)"></i><h3>Administrador técnico</h3><p>Gerencia dispositivos, APIs, conectividade, logs, integrações e integridade dos dados.</p></div>
-              <div class="persona-card"><i class="bi bi-shield-check" style="color: var(--purple)"></i><h3>Comitê de governança</h3><p>Audita acessos, conformidade, termos, incidentes, permissões e relatórios.</p></div>
-            </div>
-          </div>
-        </article>
-
-        <article class="card span-12">
-          <div class="card-content">
-            <div class="section-header"><div><p class="section-kicker">Evidência e maturidade</p><h2>Pronto para evoluir de demonstração para projeto-piloto</h2><p>A tela também pode comunicar maturidade tecnológica e científica, deixando claro quais dimensões precisam ser validadas em campo.</p></div></div>
-            <div class="evidence-grid">
-              <div class="evidence-item"><i class="bi bi-check2-circle" style="color: var(--primary)"></i><h3>Validação operacional</h3><p>Testar adesão, sincronização, bateria, perda de dados e experiência dos participantes.</p></div>
-              <div class="evidence-item"><i class="bi bi-bar-chart-line" style="color: var(--blue)"></i><h3>Validação analítica</h3><p>Comparar alertas com histórico individual, eventos reportados e avaliação da equipe.</p></div>
-              <div class="evidence-item"><i class="bi bi-people" style="color: var(--yellow)"></i><h3>Validação com usuários</h3><p>Avaliar compreensão, utilidade, confiança, sobrecarga de alertas e tomada de decisão.</p></div>
-              <div class="evidence-item"><i class="bi bi-shield-lock" style="color: var(--purple)"></i><h3>Validação ética</h3><p>Garantir consentimento, minimização de dados, transparência, segurança e finalidade adequada.</p></div>
-            </div>
-          </div>
-        </article>
-
         <article class="card span-12" id="automationSection">
           <div class="card-content">
             <div class="section-header"><div><h2>Automações de cuidado e pesquisa</h2><p>Regras simuladas para transformar dados brutos em ações, alertas e relatórios.</p></div><button class="action-button" id="newRuleButton"><i class="bi bi-plus-lg"></i> Nova regra</button></div>
@@ -596,18 +558,6 @@
               <div class="automation-card"><h3><i class="bi bi-heart-pulse"></i> Alerta de FC elevada</h3><p>Gera alerta quando a frequência cardíaca permanece acima do limite individual por período prolongado.</p><div class="toggle-row"><span class="status-badge">Ativa</span><button class="toggle active" data-toggle><span></span></button></div></div>
               <div class="automation-card"><h3><i class="bi bi-person-walking"></i> Queda de mobilidade</h3><p>Detecta redução significativa de passos em comparação com o histórico individual do participante.</p><div class="toggle-row"><span class="status-badge">Ativa</span><button class="toggle active" data-toggle><span></span></button></div></div>
               <div class="automation-card"><h3><i class="bi bi-moon-stars"></i> Sono insuficiente</h3><p>Prioriza participantes com redução recorrente de sono e possível impacto na recuperação.</p><div class="toggle-row"><span class="status-badge warning">Revisão</span><button class="toggle" data-toggle><span></span></button></div></div>
-            </div>
-          </div>
-        </article>
-
-        <article class="card span-12" id="roadmapSection">
-          <div class="card-content">
-            <div class="section-header"><div><p class="section-kicker">Implantação sugerida</p><h2>Roadmap para apresentar a parceiros</h2><p>Uma visão clara de etapas ajuda a transformar a página em argumento de projeto, não apenas em protótipo visual.</p></div></div>
-            <div class="roadmap">
-              <div class="roadmap-item"><i class="bi bi-1-circle" style="color: var(--primary)"></i><h3>Fase 1 — Piloto controlado</h3><p>Selecionar participantes, dispositivos, termos, fluxos de suporte e indicadores mínimos.</p></div>
-              <div class="roadmap-item"><i class="bi bi-2-circle" style="color: var(--blue)"></i><h3>Fase 2 — Integração segura</h3><p>Conectar APIs, data lake, autenticação, logs, camada bronze/silver/gold e auditoria.</p></div>
-              <div class="roadmap-item"><i class="bi bi-3-circle" style="color: var(--yellow)"></i><h3>Fase 3 — Inteligência e alertas</h3><p>Configurar regras, baselines individuais, painéis, relatórios e validação com equipe.</p></div>
-              <div class="roadmap-item"><i class="bi bi-4-circle" style="color: var(--purple)"></i><h3>Fase 4 — Escala territorial</h3><p>Expandir para novas coortes, territórios, instituições e estudos associados.</p></div>
             </div>
           </div>
         </article>

@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sabiá Vitalis: plataforma de saúde conectada para integrar dados de smartwatches ao Sabiá Data Lake, com consentimento, governança e inteligência preventiva." />
+  <title>Sabiá Vitalis | Do pulso ao cuidado</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    :root {
+      --bg-main: #06141d;
+      --bg-deep: #031019;
+      --bg-soft: #0b2230;
+      --bg-card: rgba(255, 255, 255, 0.08);
+      --bg-card-strong: rgba(255, 255, 255, 0.13);
+      --border: rgba(255, 255, 255, 0.12);
+      --border-strong: rgba(255, 255, 255, 0.24);
+      --text: #eef8fb;
+      --muted: #a1bac6;
+      --muted-2: #6f8997;
+      --primary: #34d399;
+      --primary-2: #2dd4bf;
+      --blue: #60a5fa;
+      --yellow: #facc15;
+      --red: #fb7185;
+      --purple: #a78bfa;
+      --orange: #fb923c;
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
+      --shadow-soft: 0 18px 50px rgba(0,0,0,0.22);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1220px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(52, 211, 153, 0.26), transparent 32%),
+        radial-gradient(circle at 95% 4%, rgba(45, 212, 191, 0.20), transparent 30%),
+        radial-gradient(circle at 62% 115%, rgba(96, 165, 250, 0.13), transparent 42%),
+        linear-gradient(135deg, #06131d 0%, #071822 42%, #092536 100%);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.034) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.034) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 86%);
+      z-index: 0;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto -18vw -34vh auto;
+      width: 62vw;
+      height: 62vw;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(52, 211, 153, .18), transparent 64%);
+      filter: blur(8px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+
+    .site { position: relative; z-index: 1; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background: rgba(4, 18, 28, 0.74);
+      backdrop-filter: blur(22px);
+    }
+    .nav-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 230px;
+    }
+    .brand-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      color: #052016;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      font-size: 1.52rem;
+      box-shadow: 0 14px 35px rgba(52, 211, 153, 0.24);
+    }
+    .brand h1 { font-size: 1.06rem; line-height: 1.03; letter-spacing: -0.045em; }
+    .brand p { margin-top: 5px; color: var(--muted); font-size: .73rem; }
+
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-links a {
+      padding: 10px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 800;
+      transition: .22s ease;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,.07); }
+    .nav-cta { display: flex; align-items: center; gap: 9px; }
+    .mobile-menu { display: none; width: 44px; height: 44px; border: 1px solid var(--border); color: var(--text); background: rgba(255,255,255,.07); border-radius: 15px; }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 11px 16px;
+      color: var(--text);
+      background: rgba(255,255,255,.075);
+      font-weight: 900;
+      font-size: .86rem;
+      box-shadow: 0 14px 30px rgba(0,0,0,.12);
+      transition: .22s ease;
+    }
+    .button:hover { transform: translateY(-2px); background: rgba(255,255,255,.12); }
+    .button.primary { color: #052016; background: linear-gradient(135deg, var(--primary), var(--primary-2)); border-color: transparent; }
+    .button.large { min-height: 54px; padding-inline: 20px; font-size: .92rem; }
+    .button.ghost { background: transparent; }
+
+    .hero { padding: 74px 0 38px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(52, 211, 153, 0.25);
+      border-radius: 999px;
+      color: #bdfbea;
+      background: rgba(52, 211, 153, 0.10);
+      font-size: .78rem;
+      font-weight: 900;
+    }
+    .hero h2 {
+      margin-top: 17px;
+      font-size: clamp(2.75rem, 6.2vw, 6.35rem);
+      line-height: .90;
+      letter-spacing: -0.085em;
+      max-width: 850px;
+    }
+    .gradient-text { color: transparent; background: linear-gradient(135deg, var(--primary), #d9fff3 48%, var(--primary-2)); -webkit-background-clip: text; background-clip: text; }
+    .hero-copy {
+      margin-top: 20px;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.78;
+    }
+    .hero-copy strong { color: #eafff7; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+    .trust-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 23px; }
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #c9ffee;
+      border: 1px solid rgba(52,211,153,.20);
+      background: rgba(52,211,153,.08);
+      border-radius: 999px;
+      padding: 9px 11px;
+      font-weight: 900;
+      font-size: .76rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 640px;
+      border: 1px solid var(--border);
+      border-radius: 36px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(52,211,153,.18), transparent 38%),
+        linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.048));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(24px);
+    }
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: -20% -12% auto auto;
+      width: 380px;
+      height: 380px;
+      border-radius: 999px;
+      background: rgba(45,212,191,.16);
+      filter: blur(28px);
+    }
+    .pulse-orbit {
+      position: absolute;
+      inset: 82px 50px auto;
+      height: 350px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      animation: float 5s ease-in-out infinite;
+    }
+    .pulse-orbit::before, .pulse-orbit::after {
+      content: "";
+      position: absolute;
+      inset: 38px;
+      border: 1px solid rgba(52,211,153,.18);
+      border-radius: 999px;
+    }
+    .pulse-orbit::after { inset: 84px; border-color: rgba(96,165,250,.18); }
+    .watch-core {
+      position: relative;
+      z-index: 2;
+      width: 182px;
+      height: 238px;
+      border-radius: 42px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: linear-gradient(155deg, #081a25, #0f2e3d 60%, #092030);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 40px 80px rgba(0,0,0,.42);
+      display: grid;
+      place-items: center;
+    }
+    .watch-core::before, .watch-core::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 76px;
+      height: 58px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .watch-core::before { top: -62px; }
+    .watch-core::after { bottom: -62px; }
+    .watch-screen {
+      width: 132px;
+      height: 172px;
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at 50% 24%, rgba(52,211,153,.30), transparent 35%),
+        linear-gradient(160deg, rgba(5,20,30,.98), rgba(4,12,20,.96));
+      border: 1px solid rgba(255,255,255,.13);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .heart-line { color: var(--primary); font-size: 2.15rem; text-align: center; filter: drop-shadow(0 0 16px rgba(52,211,153,.34)); animation: beat 1.65s ease-in-out infinite; }
+    .watch-number { font-size: 2.15rem; font-weight: 900; letter-spacing: -.08em; text-align: center; }
+    .watch-label { text-align: center; color: var(--muted); font-size: .69rem; font-weight: 900; }
+    .mini-graph { display: flex; align-items: end; justify-content: center; gap: 4px; height: 36px; }
+    .mini-graph span { width: 8px; border-radius: 999px; background: linear-gradient(180deg, var(--primary-2), var(--primary)); opacity: .95; }
+
+    .floating-card {
+      position: absolute;
+      z-index: 4;
+      width: min(300px, 80%);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: rgba(6, 20, 29, .74);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-soft);
+      padding: 16px;
+    }
+    .floating-card h3 { font-size: .93rem; letter-spacing: -.03em; display: flex; align-items: center; gap: 8px; }
+    .floating-card p { margin-top: 8px; color: var(--muted); font-size: .78rem; line-height: 1.55; }
+    .floating-card.one { left: 24px; bottom: 150px; }
+    .floating-card.two { right: 24px; bottom: 78px; }
+    .floating-card.three { left: 50%; transform: translateX(-50%); bottom: 24px; width: min(470px, calc(100% - 48px)); }
+    .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-top: 12px; }
+    .data-mini { border: 1px solid rgba(255,255,255,.09); border-radius: 16px; padding: 10px; background: rgba(255,255,255,.05); }
+    .data-mini strong { display: block; font-size: 1rem; letter-spacing: -.04em; }
+    .data-mini span { display: block; margin-top: 3px; color: var(--muted-2); font-size: .68rem; font-weight: 900; }
+
+    @keyframes beat { 0%, 100% { transform: scale(1); } 45% { transform: scale(1.12); } }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+    .section { padding: 62px 0; }
+    .section-header { max-width: 860px; margin-bottom: 24px; }
+    .section-header.center { text-align: center; margin-inline: auto; }
+    .section-kicker { color: #bdfbea; font-size: .72rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+    .section-title { font-size: clamp(2rem, 4.2vw, 4.2rem); line-height: .98; letter-spacing: -.078em; }
+    .section-copy { margin-top: 15px; color: var(--muted); font-size: 1rem; line-height: 1.75; }
+
+    .grid { display: grid; gap: 16px; }
+    .grid.metrics { grid-template-columns: repeat(4, 1fr); }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .grid.four { grid-template-columns: repeat(4, 1fr); }
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(145deg, rgba(255,255,255,.116), rgba(255,255,255,.052));
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(24px);
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at top right, rgba(52,211,153,.14), transparent 34%);
+      opacity: .82;
+    }
+    .card-content { position: relative; z-index: 1; padding: 22px; }
+    .metric-card { min-height: 165px; }
+    .metric-icon, .feature-icon, .step-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: rgba(255,255,255,.09);
+      border: 1px solid var(--border);
+      font-size: 1.18rem;
+      margin-bottom: 15px;
+    }
+    .metric-value { font-size: 2.4rem; font-weight: 900; letter-spacing: -.07em; }
+    .metric-label { margin-top: 8px; color: var(--muted); font-size: .82rem; line-height: 1.48; }
+    .feature h3, .step h3 { font-size: 1.03rem; letter-spacing: -.04em; }
+    .feature p, .step p { margin-top: 9px; color: var(--muted); font-size: .84rem; line-height: 1.62; }
+
+    .mission-card .card-content { padding: 32px; }
+    .mission-card h3 { font-size: clamp(1.7rem, 3vw, 3.2rem); letter-spacing: -.075em; line-height: 1.02; }
+    .mission-card p { margin-top: 17px; color: var(--muted); line-height: 1.78; max-width: 980px; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .badge {
+      border: 1px solid rgba(52,211,153,.22);
+      background: rgba(52,211,153,.09);
+      border-radius: 999px;
+      padding: 10px 13px;
+      color: #c9ffee;
+      font-weight: 900;
+      font-size: .78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .flow { counter-reset: step; }
+    .step { min-height: 230px; }
+    .step .card-content { min-height: 230px; }
+    .step-number {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      color: rgba(255,255,255,.08);
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -.08em;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .panel-list { display: flex; flex-direction: column; gap: 12px; }
+    .list-item {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: rgba(255,255,255,.052);
+      padding: 17px;
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 13px;
+    }
+    .list-item i { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 15px; background: rgba(255,255,255,.08); border: 1px solid var(--border); }
+    .list-item strong { display: block; font-size: .96rem; letter-spacing: -.03em; }
+    .list-item span { display: block; margin-top: 5px; color: var(--muted); font-size: .82rem; line-height: 1.55; }
+
+    .mock-dashboard {
+      min-height: 520px;
+      padding: 20px;
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1.1fr .9fr;
+      grid-template-rows: auto 1fr auto;
+    }
+    .mock-top { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+    .mock-title strong { display: block; font-size: 1.2rem; letter-spacing: -.04em; }
+    .mock-title span { display: block; margin-top: 5px; color: var(--muted); font-size: .78rem; }
+    .status-dot { width: 10px; height: 10px; border-radius: 999px; background: var(--primary); box-shadow: 0 0 0 7px rgba(52,211,153,.11); }
+    .status-pill { display: inline-flex; align-items: center; gap: 8px; color: #c9ffee; border: 1px solid rgba(52,211,153,.22); background: rgba(52,211,153,.09); border-radius: 999px; padding: 9px 12px; font-size: .76rem; font-weight: 900; }
+    .mock-box { border: 1px solid rgba(255,255,255,.10); border-radius: 22px; background: rgba(255,255,255,.052); padding: 15px; }
+    .bar-chart { height: 230px; display: flex; align-items: end; gap: 9px; padding-top: 12px; }
+    .bar-chart span { flex: 1; border-radius: 999px 999px 8px 8px; background: linear-gradient(180deg, var(--primary-2), var(--primary)); box-shadow: 0 -18px 38px rgba(52,211,153,.14); min-height: 40px; }
+    .alert-line { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .alert-line:last-child { border-bottom: 0; }
+    .alert-line strong { font-size: .82rem; }
+    .alert-line span { color: var(--muted); font-size: .72rem; }
+    .mock-bottom { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .mock-bottom .data-mini { padding: 14px; }
+
+    .form-shell {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .register-card .card-content { padding: 28px; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    label { color: var(--muted); font-size: .78rem; font-weight: 900; }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: rgba(255,255,255,.07);
+      color: var(--text);
+      outline: none;
+      padding: 13px 14px;
+      transition: .2s ease;
+    }
+    textarea { min-height: 96px; resize: vertical; }
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      padding-right: 46px;
+      background:
+        linear-gradient(45deg, transparent 50%, var(--primary) 50%) right 20px center / 7px 7px no-repeat,
+        linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.045));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    select:hover { border-color: rgba(52,211,153,.30); background-color: rgba(255,255,255,.095); }
+    select option { color: #071822; background: #eef8fb; }
+    input:focus, select:focus, textarea:focus { border-color: rgba(52,211,153,.45); box-shadow: 0 0 0 4px rgba(52,211,153,.09); }
+    .select-field { position: relative; }
+    .select-field::after {
+      content: "\F282";
+      font-family: "bootstrap-icons";
+      position: absolute;
+      right: 15px;
+      bottom: 13px;
+      color: var(--primary);
+      pointer-events: none;
+      font-size: .86rem;
+      filter: drop-shadow(0 0 10px rgba(52,211,153,.28));
+    }
+    .check-row {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 10px;
+      align-items: start;
+      color: var(--muted);
+      font-size: .8rem;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+    .check-row input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--primary); }
+    .form-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .form-note { margin-top: 14px; color: var(--muted-2); font-size: .76rem; line-height: 1.62; }
+    .privacy-box { border: 1px solid rgba(250,204,21,.24); background: linear-gradient(135deg, rgba(250,204,21,.10), rgba(251,113,133,.05)); border-radius: 24px; padding: 20px; }
+    .privacy-box h3 { display: flex; align-items: center; gap: 8px; font-size: 1.04rem; letter-spacing: -.03em; }
+    .privacy-box p { margin-top: 10px; color: var(--muted); line-height: 1.68; font-size: .86rem; }
+    .privacy-box ul { margin: 14px 0 0 18px; color: var(--muted); font-size: .82rem; line-height: 1.8; }
+
+    .support-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .device-chip {
+      min-height: 112px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: rgba(255,255,255,.052);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .device-chip i { color: var(--primary); font-size: 1.35rem; }
+    .device-chip strong { display: block; margin-top: 16px; letter-spacing: -.03em; }
+    .device-chip span { color: var(--muted); font-size: .75rem; margin-top: 4px; }
+
+    footer { padding: 48px 0 34px; color: var(--muted); }
+    .footer-grid { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid var(--border); padding-top: 24px; }
+    .footer-grid p { font-size: .8rem; line-height: 1.6; }
+
+    .toast-container { position: fixed; right: 22px; bottom: 22px; z-index: 90; display: flex; flex-direction: column; gap: 10px; }
+    .toast {
+      min-width: 300px;
+      max-width: 420px;
+      padding: 14px 15px;
+      border: 1px solid rgba(52,211,153,.28);
+      border-radius: 18px;
+      background: rgba(5, 20, 30, .94);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      animation: toastIn .25s ease;
+    }
+    .toast i { color: var(--primary); margin-top: 2px; }
+    .toast strong { display: block; font-size: .84rem; }
+    .toast span { display: block; margin-top: 3px; color: var(--muted); font-size: .76rem; line-height: 1.4; }
+    @keyframes toastIn { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    .modal-backdrop { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; padding: 20px; z-index: 80; background: rgba(0,0,0,.58); backdrop-filter: blur(8px); }
+    .modal-backdrop.open { display: flex; }
+    .modal { width: min(760px, 100%); max-height: min(84vh, 840px); overflow: auto; border: 1px solid var(--border-strong); border-radius: 28px; background: linear-gradient(145deg, rgba(8,31,44,.98), rgba(4,17,27,.98)); box-shadow: var(--shadow); }
+    .modal-header { display: flex; justify-content: space-between; gap: 16px; padding: 22px; border-bottom: 1px solid var(--border); }
+    .modal-header h3 { font-size: 1.25rem; letter-spacing: -.04em; }
+    .modal-header p { margin-top: 6px; color: var(--muted); font-size: .84rem; line-height: 1.5; }
+    .modal-body { padding: 22px; color: var(--muted); line-height: 1.72; font-size: .9rem; }
+    .close-button { width: 40px; height: 40px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255,255,255,.08); color: var(--text); }
+
+    @media (max-width: 1080px) {
+      .hero-grid, .split, .form-shell { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 560px; }
+      .grid.metrics, .grid.four, .support-strip { grid-template-columns: repeat(2, 1fr); }
+      .grid.three { grid-template-columns: 1fr; }
+      .mock-dashboard { grid-template-columns: 1fr; }
+      .mock-top, .mock-bottom { grid-column: auto; }
+    }
+    @media (max-width: 850px) {
+      .mobile-menu { display: grid; place-items: center; }
+      .nav-links { position: fixed; inset: 78px 16px auto; display: none; flex-direction: column; align-items: stretch; padding: 14px; border: 1px solid var(--border); border-radius: 22px; background: rgba(4,18,28,.96); backdrop-filter: blur(20px); box-shadow: var(--shadow); }
+      .nav-links.open { display: flex; }
+      .nav-cta .button.ghost { display: none; }
+      .hero { padding-top: 46px; }
+      .hero h2 { letter-spacing: -.065em; }
+      .hero-visual { min-height: 620px; }
+      .pulse-orbit { inset-inline: 18px; }
+      .floating-card.one, .floating-card.two { left: 18px; right: 18px; width: auto; }
+      .floating-card.one { bottom: 172px; }
+      .floating-card.two { bottom: 84px; }
+      .floating-card.three { display: none; }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      .nav-inner { min-height: 72px; }
+      .brand-icon { width: 48px; height: 48px; }
+      .brand h1 { font-size: .98rem; }
+      .grid.metrics, .grid.four, .grid.two, .support-strip, .form-grid, .mock-bottom { grid-template-columns: 1fr; }
+      .register-card .card-content { padding: 22px; }
+      input, select, textarea { min-height: 50px; }
+      .section { padding: 46px 0; }
+      .hero-copy, .section-copy { font-size: .96rem; }
+      .hero-actions .button { width: 100%; }
+      .hero-visual { min-height: 570px; }
+      .watch-core { width: 156px; height: 210px; }
+      .watch-screen { width: 116px; height: 150px; padding: 14px; }
+      .floating-card { padding: 14px; }
+      .footer-grid { flex-direction: column; align-items: flex-start; }
+    }
+
+
+    /* Correção de layout: evita sobreposição entre o smartwatch, cards flutuantes e métricas */
+    .hero-visual {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: auto auto auto;
+      gap: 14px;
+      align-items: stretch;
+      min-height: auto;
+      padding: 34px 22px 22px;
+    }
+    .pulse-orbit {
+      position: relative;
+      inset: auto;
+      grid-column: 1 / -1;
+      width: min(100%, 520px);
+      height: 330px;
+      margin: 18px auto 20px;
+    }
+    .floating-card {
+      position: relative;
+      inset: auto;
+      width: auto;
+      min-width: 0;
+      height: auto;
+      padding: 18px;
+    }
+    .floating-card.one,
+    .floating-card.two,
+    .floating-card.three {
+      left: auto;
+      right: auto;
+      bottom: auto;
+      transform: none;
+    }
+    .floating-card.one { grid-column: 1; }
+    .floating-card.two { grid-column: 2; }
+    .floating-card.three { grid-column: 1 / -1; }
+    .data-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .data-mini { min-width: 0; }
+    .data-mini strong, .data-mini span { overflow-wrap: anywhere; }
+
+    @media (max-width: 850px) {
+      .hero-visual {
+        grid-template-columns: 1fr;
+        padding: 26px 16px 18px;
+      }
+      .pulse-orbit {
+        width: 100%;
+        height: 300px;
+        margin: 10px auto 16px;
+      }
+      .floating-card.one,
+      .floating-card.two,
+      .floating-card.three {
+        display: block;
+        grid-column: 1;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        width: auto;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .hero-visual { padding: 22px 14px 16px; }
+      .pulse-orbit { height: 270px; }
+      .data-row { grid-template-columns: 1fr; }
+      .watch-core { width: 148px; height: 198px; }
+      .watch-core::before { top: -54px; }
+      .watch-core::after { bottom: -54px; }
+      .watch-screen { width: 110px; height: 142px; }
+    }
+
+    .compact-chart-box {
+      padding-bottom: 14px;
+    }
+
+    .vital-chart {
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top right, rgba(52, 211, 153, 0.16), transparent 36%),
+        rgba(255, 255, 255, 0.045);
+    }
+
+    .vital-chart-head {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .vital-chart-head div {
+      min-width: 0;
+      padding: 10px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid rgba(255, 255, 255, 0.075);
+    }
+
+    .vital-chart-head strong {
+      display: block;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+    }
+
+    .vital-chart-head span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .line-chart {
+      height: 112px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      background:
+        linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+      background-size: 42px 32px;
+    }
+
+    .line-chart svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .line-chart .area {
+      fill: rgba(52, 211, 153, 0.12);
+    }
+
+    .line-chart .line {
+      fill: none;
+      stroke: url(#chartGlow);
+      stroke-width: 4;
+      stroke-linecap: round;
+      filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.28));
+    }
+
+    .line-chart circle {
+      fill: #dffef6;
+      stroke: #34d399;
+      stroke-width: 3;
+      filter: drop-shadow(0 0 8px rgba(52, 211, 153, 0.45));
+    }
+
+    .chart-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      margin-top: 8px;
+      color: var(--muted-2);
+      font-size: 0.68rem;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    @media (max-width: 680px) {
+      .vital-chart-head {
+        grid-template-columns: 1fr;
+      }
+
+      .line-chart {
+        height: 96px;
+      }
+
+      .chart-days {
+        font-size: 0.62rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header class="top-nav">
+      <div class="container nav-inner">
+        <a class="brand" href="#inicio" aria-label="Sabiá Vitalis">
+          <div class="brand-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+          <div>
+            <h1>Sabiá Vitalis</h1>
+            <p>Do pulso ao cuidado</p>
+          </div>
+        </a>
+
+        <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
+          <a href="#projeto">Projeto</a>
+          <a href="#como-funciona">Como funciona</a>
+          <a href="#dados">Dados</a>
+          <a href="#seguranca">Segurança</a>
+          <a href="#cadastro">Cadastro</a>
+        </nav>
+
+        <div class="nav-cta">
+          <a class="button ghost" href="#dados"><i class="bi bi-smartwatch"></i> Ver integração</a>
+          <a class="button primary" href="#cadastro"><i class="bi bi-send-check-fill"></i> Quero participar</a>
+          <button class="mobile-menu" id="mobileMenu" aria-label="Abrir menu"><i class="bi bi-list"></i></button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="container hero-grid">
+          <div>
+            <div class="kicker"><i class="bi bi-watch"></i> Saúde conectada • Sabiá Data Lake • Consentimento seguro</div>
+            <h2><span class="gradient-text">Seu smartwatch</span> pode ajudar a construir uma nova camada de cuidado.</h2>
+            <p class="hero-copy"><strong>Sabiá Vitalis</strong> é uma plataforma de pesquisa e inovação em saúde digital que conecta dados autorizados de smartwatches ao ecossistema Sabiá, criando uma infraestrutura para acompanhamento remoto, inteligência preventiva, governança de dados e impacto social.</p>
+            <div class="hero-actions">
+              <a class="button primary large" href="#cadastro"><i class="bi bi-person-plus-fill"></i> Fazer pré-cadastro</a>
+              <a class="button large" href="#como-funciona"><i class="bi bi-diagram-3-fill"></i> Entender o fluxo</a>
+            </div>
+            <div class="trust-row">
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Ilustração futurista de smartwatch conectado ao Sabiá Vitalis">
+            <div class="pulse-orbit">
+              <div class="watch-core">
+                <div class="watch-screen">
+                  <div class="heart-line"><i class="bi bi-heart-pulse-fill"></i></div>
+                  <div>
+                    <div class="watch-number">74</div>
+                    <div class="watch-label">bpm • leitura segura</div>
+                  </div>
+                  <div class="mini-graph"><span style="height: 18px"></span><span style="height: 28px"></span><span style="height: 22px"></span><span style="height: 34px"></span><span style="height: 24px"></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="floating-card one">
+              <h3><i class="bi bi-cloud-arrow-up-fill" style="color: var(--primary)"></i> Conexão autorizada</h3>
+              <p>O participante recebe um link seguro, escolhe conectar sua conta/dispositivo e autoriza apenas os dados necessários.</p>
+            </div>
+            <div class="floating-card two">
+              <h3><i class="bi bi-cpu-fill" style="color: var(--blue)"></i> Inteligência preventiva</h3>
+              <p>Sinais vitais, sono, rotina e adesão são organizados para apoiar pesquisa, triagem e acompanhamento.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container grid metrics">
+          <article class="card metric-card"><div class="card-content"><div class="metric-icon" style="color: var(--primary)"><i class="bi bi-person-check-fill"></i></div><div class="metric-value">01</div><p class="metric-label"><strong>Cadastro simples.</strong><br>O usuário manifesta interesse e informa o dispositivo utilizado.</p></div></article>
+          <article class="card metric-card"><div class="card-content"><div class="metric-icon" style="color: var(--blue)"><i class="bi bi-link-45deg"></i></div><div class="metric-value">02</div><p class="metric-label"><strong>Link seguro.</strong><br>A equipe envia o link de conexão com a plataforma autorizada.</p></div></article>
+          <article class="card metric-card"><div class="card-content"><div class="metric-icon" style="color: var(--yellow)"><i class="bi bi-shield-lock-fill"></i></div><div class="metric-value">03</div><p class="metric-label"><strong>Permissão consciente.</strong><br>O participante autoriza os dados conforme finalidade e consentimento.</p></div></article>
+          <article class="card metric-card"><div class="card-content"><div class="metric-icon" style="color: var(--purple)"><i class="bi bi-graph-up-arrow"></i></div><div class="metric-value">04</div><p class="metric-label"><strong>Cuidado inteligente.</strong><br>Os dados são organizados para pesquisa, análise e acompanhamento.</p></div></article>
+        </div>
+      </section>
+
+      <section class="section" id="projeto">
+        <div class="container">
+          <article class="card mission-card">
+            <div class="card-content">
+              <p class="section-kicker">A ideia</p>
+              <h3>Transformar dados cotidianos de smartwatches em uma infraestrutura de cuidado, ciência e prevenção.</h3>
+              <p>O Sabiá Vitalis nasce como uma camada aplicada do Sabiá Data Lake para conectar dispositivos vestíveis, pessoas, pesquisadores e instituições. A proposta é criar um caminho responsável para coletar dados com permissão, organizar sinais de rotina e apoiar iniciativas em saúde conectada, acompanhamento remoto, envelhecimento saudável, estudos populacionais e inovação pública.</p>
+              <p>O sistema não substitui atendimento médico, diagnóstico ou serviços de urgência. Ele atua como uma plataforma de apoio: organiza dados, identifica padrões, reduz perdas de coleta e fortalece decisões baseadas em evidências.</p>
+              <div class="badge-row">
+                <span class="badge"><i class="bi bi-heart-pulse"></i> Saúde digital</span>
+                <span class="badge"><i class="bi bi-people-fill"></i> Pesquisa com pessoas</span>
+                <span class="badge"><i class="bi bi-database-fill-check"></i> Dados padronizados</span>
+                <span class="badge"><i class="bi bi-fingerprint"></i> Baseline individual</span>
+                <span class="badge"><i class="bi bi-clipboard2-pulse-fill"></i> Acompanhamento remoto</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="como-funciona">
+        <div class="container">
+          <div class="section-header center">
+            <p class="section-kicker">Como funciona</p>
+            <h2 class="section-title">Do cadastro à conexão com a plataforma.</h2>
+            <p class="section-copy">O participante não entrega dados diretamente no formulário. Primeiro ele se cadastra. Depois, a equipe envia um link de conexão para que a autorização aconteça dentro do fluxo seguro da plataforma.</p>
+          </div>
+          <div class="grid four flow">
+            <article class="card step"><div class="card-content"><span class="step-number">01</span><div class="step-icon" style="color: var(--primary)"><i class="bi bi-pencil-square"></i></div><h3>Pré-cadastro</h3><p>O usuário informa nome, e-mail, WhatsApp, cidade, perfil e qual smartwatch ou aplicativo utiliza.</p></div></article>
+            <article class="card step"><div class="card-content"><span class="step-number">02</span><div class="step-icon" style="color: var(--blue)"><i class="bi bi-envelope-paper-heart"></i></div><h3>Envio do link</h3><p>A equipe confirma elegibilidade e envia um link individual para conexão com a plataforma Sabiá Vitalis.</p></div></article>
+            <article class="card step"><div class="card-content"><span class="step-number">03</span><div class="step-icon" style="color: var(--yellow)"><i class="bi bi-shield-check"></i></div><h3>Consentimento</h3><p>O participante autoriza os dados permitidos, com finalidade clara, registro de consentimento e possibilidade de revogação.</p></div></article>
+            <article class="card step"><div class="card-content"><span class="step-number">04</span><div class="step-icon" style="color: var(--purple)"><i class="bi bi-activity"></i></div><h3>Sincronização</h3><p>Os dados autorizados são organizados para análise, alertas operacionais, relatórios e pesquisa aplicada.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="dados">
+        <div class="container split">
+          <div>
+            <div class="section-header">
+              <p class="section-kicker">Dados e inteligência</p>
+              <h2 class="section-title">O que pode ser acompanhado.</h2>
+              <p class="section-copy">
+                A disponibilidade depende do dispositivo, do aplicativo, da API e da permissão do usuário.
+                A plataforma foi pensada para consolidar múltiplas fontes com padronização, segurança e qualidade.
+              </p>
+            </div>
+
+            <div class="panel-list">
+              <div class="list-item">
+                <i class="bi bi-heart-pulse-fill" style="color: var(--red)"></i>
+                <div>
+                  <strong>Sinais vitais</strong>
+                  <span>Frequência cardíaca, frequência em repouso, SpO₂, temperatura, respiração e métricas compatíveis com cada dispositivo.</span>
+                </div>
+              </div>
+
+              <div class="list-item">
+                <i class="bi bi-person-walking" style="color: var(--blue)"></i>
+                <div>
+                  <strong>Atividade e mobilidade</strong>
+                  <span>Passos, distância, tempo ativo, sedentarismo, treinos e mudanças bruscas no padrão diário.</span>
+                </div>
+              </div>
+
+              <div class="list-item">
+                <i class="bi bi-moon-stars-fill" style="color: var(--purple)"></i>
+                <div>
+                  <strong>Sono e recuperação</strong>
+                  <span>Duração, regularidade, fragmentação, despertares e indicadores de recuperação quando disponíveis.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <article class="card mock-dashboard" aria-label="Prévia de painel Sabiá Vitalis">
+            <div class="mock-top">
+              <div class="mock-title">
+                <strong>Painel Sabiá Vitalis</strong>
+                <span>visão demonstrativa da operação</span>
+              </div>
+              <span class="status-pill">
+                <span class="status-dot"></span>
+                online
+              </span>
+            </div>
+
+            <div class="mock-box compact-chart-box">
+              <div class="mock-title">
+                <strong>Tendência semanal</strong>
+                <span>atividade, cardio e sono em visão integrada</span>
+              </div>
+
+              <div class="vital-chart">
+                <div class="vital-chart-head">
+                  <div>
+                    <strong>7.842</strong>
+                    <span>passos médios</span>
+                  </div>
+                  <div>
+                    <strong>74 bpm</strong>
+                    <span>FC média</span>
+                  </div>
+                  <div>
+                    <strong>7h12</strong>
+                    <span>sono médio</span>
+                  </div>
+                </div>
+
+                <div class="line-chart" aria-hidden="true">
+                  <svg viewBox="0 0 420 150" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="chartGlow" x1="0" x2="1" y1="0" y2="0">
+                        <stop offset="0%" stop-color="#34d399"/>
+                        <stop offset="55%" stop-color="#2dd4bf"/>
+                        <stop offset="100%" stop-color="#60a5fa"/>
+                      </linearGradient>
+                    </defs>
+
+                    <path
+                      class="area"
+                      d="M0,112 C48,95 72,58 124,74 C176,91 192,39 250,52 C306,65 334,28 420,42 L420,150 L0,150 Z">
+                    </path>
+
+                    <path
+                      class="line"
+                      d="M0,112 C48,95 72,58 124,74 C176,91 192,39 250,52 C306,65 334,28 420,42">
+                    </path>
+
+                    <circle cx="0" cy="112" r="4"></circle>
+                    <circle cx="124" cy="74" r="4"></circle>
+                    <circle cx="250" cy="52" r="4"></circle>
+                    <circle cx="420" cy="42" r="4"></circle>
+                  </svg>
+                </div>
+
+                <div class="chart-days">
+                  <span>Seg</span>
+                  <span>Ter</span>
+                  <span>Qua</span>
+                  <span>Qui</span>
+                  <span>Sex</span>
+                  <span>Sáb</span>
+                  <span>Dom</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mock-box">
+              <div class="mock-title">
+                <strong>Fila inteligente</strong>
+                <span>alertas operacionais e sinais de atenção</span>
+              </div>
+
+              <div class="alert-line">
+                <div>
+                  <strong>FC acima do padrão</strong><br>
+                  <span>revisar participante</span>
+                </div>
+                <i class="bi bi-exclamation-triangle-fill" style="color: var(--yellow)"></i>
+              </div>
+
+              <div class="alert-line">
+                <div>
+                  <strong>Baixa sincronização</strong><br>
+                  <span>últimas 48h</span>
+                </div>
+                <i class="bi bi-cloud-slash-fill" style="color: var(--blue)"></i>
+              </div>
+
+              <div class="alert-line">
+                <div>
+                  <strong>Queda de mobilidade</strong><br>
+                  <span>comparação individual</span>
+                </div>
+                <i class="bi bi-arrow-down-right" style="color: var(--red)"></i>
+              </div>
+
+              <div class="alert-line">
+                <div>
+                  <strong>Sono fragmentado</strong><br>
+                  <span>três noites seguidas</span>
+                </div>
+                <i class="bi bi-moon-stars-fill" style="color: var(--purple)"></i>
+              </div>
+            </div>
+
+            <div class="mock-bottom">
+              <div class="data-mini">
+                <strong>42</strong>
+                <span>dispositivos online</span>
+              </div>
+              <div class="data-mini">
+                <strong>96,4%</strong>
+                <span>sincronização</span>
+              </div>
+              <div class="data-mini">
+                <strong>6</strong>
+                <span>alertas em revisão</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-header center">
+            <p class="section-kicker">Dispositivos e fontes</p>
+            <h2 class="section-title">Preparado para um ecossistema aberto.</h2>
+            <p class="section-copy">O projeto pode evoluir com integrações por APIs, Health Connect, plataformas de fabricantes e conectores autorizados, sempre respeitando consentimento, disponibilidade técnica e regras de cada provedor.</p>
+          </div>
+          <div class="support-strip">
+            <div class="device-chip"><i class="bi bi-smartwatch"></i><div><strong>Garmin</strong><span>via integração autorizada</span></div></div>
+            <div class="device-chip"><i class="bi bi-watch"></i><div><strong>Fitbit</strong><span>OAuth e dados permitidos</span></div></div>
+            <div class="device-chip"><i class="bi bi-android2"></i><div><strong>Health Connect</strong><span>dados no Android</span></div></div>
+            <div class="device-chip"><i class="bi bi-phone"></i><div><strong>Apps de saúde</strong><span>conforme disponibilidade</span></div></div>
+            <div class="device-chip"><i class="bi bi-plus-circle"></i><div><strong>Novos provedores</strong><span>arquitetura expansível</span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="seguranca">
+        <div class="container">
+          <div class="section-header center">
+            <p class="section-kicker">Confiança, ética e LGPD</p>
+            <h2 class="section-title">Dados sensíveis exigem responsabilidade real.</h2>
+            <p class="section-copy">O Sabiá Vitalis foi desenhado para uma experiência de coleta com consentimento, transparência, rastreabilidade e limitação de finalidade. A segurança não é um detalhe visual: é parte central da arquitetura.</p>
+          </div>
+          <div class="grid three">
+            <article class="card feature"><div class="card-content"><div class="feature-icon" style="color: var(--primary)"><i class="bi bi-person-lock"></i></div><h3>Consentimento e finalidade</h3><p>O participante entende por que os dados serão coletados, quais dados serão usados e como poderá revogar a autorização conforme o protocolo do projeto.</p></div></article>
+            <article class="card feature"><div class="card-content"><div class="feature-icon" style="color: var(--blue)"><i class="bi bi-shield-lock-fill"></i></div><h3>Controle de acesso</h3><p>A visualização deve ser limitada por perfil, equipe, finalidade e necessidade operacional, com logs e auditoria.</p></div></article>
+            <article class="card feature"><div class="card-content"><div class="feature-icon" style="color: var(--yellow)"><i class="bi bi-database-lock"></i></div><h3>Governança de dados</h3><p>Os dados devem ser padronizados, protegidos, documentados e integrados ao Data Lake com rastreabilidade de origem.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="cadastro">
+        <div class="container form-shell">
+          <div>
+            <div class="section-header">
+              <p class="section-kicker">Pré-cadastro</p>
+              <h2 class="section-title">Entre na lista de conexão.</h2>
+              <p class="section-copy">Preencha seus dados. A equipe do projeto enviará o link individual para conectar sua conta/dispositivo à plataforma com permissão explícita.</p>
+            </div>
+            <div class="privacy-box">
+              <h3><i class="bi bi-exclamation-triangle-fill" style="color: var(--yellow)"></i> Importante</h3>
+              <p>Este formulário não coleta dados de saúde. Ele registra apenas interesse e informações de contato para que a equipe envie o link correto de conexão.</p>
+              <ul>
+                <li>Você decide se autoriza ou não a conexão.</li>
+                <li>A autorização acontece em ambiente próprio da plataforma/provedor.</li>
+                <li>O projeto deve seguir termo de consentimento, LGPD e protocolo institucional.</li>
+              </ul>
+            </div>
+          </div>
+
+          <article class="card register-card">
+            <div class="card-content">
+              <form id="registrationForm">
+                <div class="form-grid">
+                  <div class="field"><label for="name">Nome completo *</label><input id="name" name="name" type="text" placeholder="Seu nome" required></div>
+                  <div class="field"><label for="email">E-mail *</label><input id="email" name="email" type="email" placeholder="seuemail@exemplo.com" required></div>
+                  <div class="field"><label for="phone">WhatsApp</label><input id="phone" name="phone" type="tel" placeholder="(00) 00000-0000"></div>
+                  <div class="field"><label for="city">Cidade/Estado</label><input id="city" name="city" type="text" placeholder="Ex.: Cornélio Procópio/PR"></div>
+                  <div class="field select-field"><label for="profile">Perfil</label><select id="profile" name="profile"><option value="">Selecione</option><option>Participante voluntário</option><option>Paciente acompanhado</option><option>Profissional de saúde</option><option>Pesquisador(a)</option><option>Instituição parceira</option></select></div>
+                  <div class="field select-field"><label for="device">Dispositivo/App</label><select id="device" name="device"><option value="">Selecione</option><option>Garmin</option><option>Fitbit</option><option>Apple Watch</option><option>Samsung Health</option><option>Google Health Connect</option><option>Xiaomi/Mi Fitness</option><option>Outro</option><option>Ainda não tenho smartwatch</option></select></div>
+                  <div class="field full"><label for="message">Mensagem opcional</label><textarea id="message" name="message" placeholder="Conte brevemente seu interesse, projeto, instituição ou contexto de uso."></textarea></div>
+                </div>
+
+                <label class="check-row"><input type="checkbox" id="contactConsent" required><span>Autorizo que a equipe do Sabiá Vitalis entre em contato comigo para orientar o processo de conexão com a plataforma. *</span></label>
+                <label class="check-row"><input type="checkbox" id="healthConsent" required><span>Entendo que este cadastro não autoriza automaticamente o acesso aos meus dados de saúde; a conexão exigirá consentimento específico posteriormente. *</span></label>
+
+                <div class="form-actions">
+                  <button class="button primary large" type="submit"><i class="bi bi-send-check-fill"></i> Enviar pré-cadastro</button>
+                  <button class="button large" type="button" id="downloadLeads"><i class="bi bi-download"></i> Baixar cadastros locais</button>
+                </div>
+                <p class="form-note">Para produção, configure no JavaScript o endereço do seu backend em <strong>CONFIG.registrationEndpoint</strong>. Sem endpoint, os dados ficam salvos apenas localmente no navegador como demonstração.</p>
+              </form>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <div class="brand">
+          <div class="brand-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+          <div><h1>Sabiá Vitalis</h1><p>Do pulso ao cuidado</p></div>
+        </div>
+        <p>Aplicação demonstrativa para apresentação institucional, captação de participantes e integração futura com plataforma autorizada. Não substitui atendimento médico, diagnóstico, urgência ou decisão clínica.</p>
+      </div>
+    </footer>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <div><h3 id="modalTitle">Cadastro recebido</h3><p id="modalSubtitle">Sua solicitação foi registrada.</p></div>
+        <button class="close-button" id="modalClose" aria-label="Fechar"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    const CONFIG = {
+      // Produção: substitua por seu endpoint real, por exemplo:
+      // registrationEndpoint: "https://api.seudominio.com/v1/vitalis/pre-cadastro"
+      registrationEndpoint: "",
+      projectEmail: "robson.bonidia@fatecourinhos.edu.br"
+    };
+
+    const $ = (selector) => document.querySelector(selector);
+    const toastContainer = $('#toastContainer');
+    const modalBackdrop = $('#modalBackdrop');
+    const modalBody = $('#modalBody');
+
+    function showToast(title, message, icon = 'bi-check-circle-fill') {
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.innerHTML = `<i class="bi ${icon}"></i><div><strong>${title}</strong><span>${message}</span></div>`;
+      toastContainer.appendChild(toast);
+      setTimeout(() => toast.remove(), 5200);
+    }
+
+    function openModal(title, subtitle, html) {
+      $('#modalTitle').textContent = title;
+      $('#modalSubtitle').textContent = subtitle;
+      modalBody.innerHTML = html;
+      modalBackdrop.classList.add('open');
+    }
+
+    function closeModal() { modalBackdrop.classList.remove('open'); }
+    $('#modalClose').addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', (event) => { if (event.target === modalBackdrop) closeModal(); });
+
+    $('#mobileMenu').addEventListener('click', () => $('#navLinks').classList.toggle('open'));
+    document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => $('#navLinks').classList.remove('open')));
+
+    function getStoredLeads() {
+      try { return JSON.parse(localStorage.getItem('sabiaVitalisLeads') || '[]'); }
+      catch { return []; }
+    }
+    function saveStoredLead(lead) {
+      const leads = getStoredLeads();
+      leads.push(lead);
+      localStorage.setItem('sabiaVitalisLeads', JSON.stringify(leads));
+    }
+
+    function makeLeadId() {
+      const now = new Date();
+      return `VITALIS-${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}-${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
+    }
+
+    $('#registrationForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const formData = new FormData(form);
+      const lead = Object.fromEntries(formData.entries());
+      lead.id = makeLeadId();
+      lead.createdAt = new Date().toISOString();
+      lead.contactConsent = $('#contactConsent').checked;
+      lead.healthConsentAcknowledgement = $('#healthConsent').checked;
+      lead.source = 'Sabiá Vitalis Landing Page';
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      const original = submitButton.innerHTML;
+      submitButton.disabled = true;
+      submitButton.innerHTML = '<i class="bi bi-arrow-repeat"></i> Enviando...';
+
+      try {
+        if (CONFIG.registrationEndpoint) {
+          const response = await fetch(CONFIG.registrationEndpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(lead)
+          });
+          if (!response.ok) throw new Error('Falha no envio ao backend');
+        } else {
+          saveStoredLead(lead);
+        }
+
+        form.reset();
+        showToast('Pré-cadastro recebido', 'A equipe enviará o link de conexão quando a integração estiver liberada.');
+        openModal(
+          'Pré-cadastro recebido',
+          `Código ${lead.id}`,
+          `<p>Obrigado, <strong>${lead.name}</strong>. Seu interesse foi registrado com sucesso.</p>
+           <p>Próximo passo: a equipe do Sabiá Vitalis enviará um link individual para que você possa conectar seu dispositivo/conta com consentimento explícito.</p>
+           <p><strong>Atenção:</strong> este formulário não dá acesso aos seus dados de saúde. A autorização será feita apenas no link de conexão da plataforma.</p>`
+        );
+      } catch (error) {
+        console.error(error);
+        showToast('Não foi possível enviar', 'Verifique o endpoint do backend ou tente novamente.', 'bi-exclamation-triangle-fill');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.innerHTML = original;
+      }
+    });
+
+    $('#downloadLeads').addEventListener('click', () => {
+      const leads = getStoredLeads();
+      if (!leads.length) {
+        showToast('Nenhum cadastro local', 'Ainda não há registros salvos neste navegador.', 'bi-info-circle-fill');
+        return;
+      }
+      const blob = new Blob([JSON.stringify(leads, null, 2)], { type: 'application/json;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `sabia-vitalis-cadastros-${new Date().toISOString().slice(0,10)}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      showToast('Arquivo gerado', 'Os cadastros locais foram exportados em JSON.');
+    });
+  </script>
+</body>
+</html>

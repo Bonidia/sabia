@@ -32,7 +32,8 @@
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -120,8 +121,7 @@
                 <h2>Indicadores iniciais do Data Lake</h2>
                 <p class="section-lead mx-auto">
                     Como o projeto ainda está em fase de estruturação, esta dashboard prioriza indicadores objetivos
-                    e verificáveis: número de pessoas, exames, arquivos, bases, instituições, capacidade de armazenamento
-                    e status da infraestrutura.
+                    e verificáveis. Os indicadores referentes a pessoas, registros clínicos e exames representam volumes identificados nos sistemas dos parceiros e ainda       não correspondem a dados efetivamente armazenados no Sabiá Data Lake.
                 </p>
             </div>
 
@@ -132,12 +132,22 @@
                         <div class="metric-icon">
                             <i class="bi bi-people"></i>
                         </div>
-                        <div class="metric-number">395.078</div>
+
+                        <div class="metric-number">395.078+</div>
+
                         <div class="metric-label">
-                            Registros de pessoas ou pacientes
+                            Pacientes atendidos
                         </div>
-                        <span class="metric-status status-success">
-                            <i class="bi bi-map"></i> Mapeamento inicial
+                        </br>
+
+                        <div class="metric-description">
+                            Registros previstos a partir da integração com instituições
+                            e hospitais parceiros.
+                        </div>
+
+                        <span class="metric-status status-warning">
+                            <i class="bi bi-hourglass-split"></i>
+                            Aguardando integração
                         </span>
                     </div>
                 </div>
@@ -147,12 +157,22 @@
                         <div class="metric-icon">
                             <i class="bi bi-file-medical"></i>
                         </div>
-                        <div class="metric-number">7.011.805</div>
+
+                        <div class="metric-number">7.011.805+</div>
+
                         <div class="metric-label">
-                            Registros clínicos/diagnósticos
+                            Registros clínicos identificados
                         </div>
-                        <span class="metric-status status-success">
-                            <i class="bi bi-map"></i> Mapeamento inicial
+                        </br>
+
+                        <div class="metric-description">
+                            Volume estimado de informações clínicas e diagnósticas
+                            disponível entre os parceiros institucionais.
+                        </div>
+
+                        <span class="metric-status status-warning">
+                            <i class="bi bi-hourglass-split"></i>
+                            Aguardando integração
                         </span>
                     </div>
                 </div>
@@ -160,14 +180,24 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="metric-card">
                         <div class="metric-icon">
-                            <i class="bi bi-folder2-open"></i>
+                            <i class="bi bi-clipboard2-pulse"></i>
                         </div>
-                        <div class="metric-number">2.958.532</div>
+
+                        <div class="metric-number">2.958.532+</div>
+
                         <div class="metric-label">
-                            Exames registrados
+                            Exames realizados
                         </div>
-                        <span class="metric-status status-success">
-                            <i class="bi bi-map"></i> Mapeamento inicial
+                        </br>
+
+                        <div class="metric-description">
+                            Exames registrados nos sistemas das instituições parceiras
+                            e previstos para futuras etapas de ingestão.
+                        </div>
+
+                        <span class="metric-status status-warning">
+                            <i class="bi bi-hourglass-split"></i>
+                            Aguardando integração
                         </span>
                     </div>
                 </div>
@@ -175,14 +205,24 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="metric-card">
                         <div class="metric-icon">
-                            <i class="bi bi-diagram-3"></i>
+                            <i class="bi bi-database-check"></i>
                         </div>
-                        <div class="metric-number">+80</div>
+
+                        <div class="metric-number">80+</div>
+
                         <div class="metric-label">
-                            Bases de dados mapeadas
+                            Bases públicas brasileiras mapeadas
                         </div>
+                        </br>
+
+                        <div class="metric-description">
+                            Fontes nacionais de saúde, demografia, território,
+                            epidemiologia e outros domínios, reunindo milhões de registros.
+                        </div>
+
                         <span class="metric-status status-success">
-                            <i class="bi bi-map"></i> Mapeamento inicial
+                            <i class="bi bi-check-circle"></i>
+                            Mapeamento realizado
                         </span>
                     </div>
                 </div>
@@ -800,7 +840,7 @@
                         <td>Pessoas / Pacientes</td>
                         <td>395.078</td>
                         <td>Base Guarapuava</td>
-                        <td><span class="status-pill warning">Em validação</span></td>
+                        <td><span class="status-pill info">Aguardando integração</span></td>
                         <td>Quantidade inicial de cadastros identificados. Ainda será validado duplicidades, identificadores e critérios de anonimização.</td>
                     </tr>
 
@@ -808,7 +848,7 @@
                         <td>Exames</td>
                         <td>7.011.805</td>
                         <td>Registros clínicos/diagnósticos</td>
-                        <td><span class="status-pill info">Em organização</span></td>
+                        <td><span class="status-pill info">Aguardando integração</span></td>
                         <td>Total inicial de registros clínicos/diagnósticos na base.</td>
                     </tr>
 
@@ -816,7 +856,7 @@
                         <td>Exames</td>
                         <td>2.958.532</td>
                         <td>Exames registrados</td>
-                        <td><span class="status-pill info">Mapeamento inicial</span></td>
+                        <td><span class="status-pill info">Aguardando integração</span></td>
                         <td>Exames que possuem associação com códigos CID, permitindo análises clínicas, epidemiológicas e territoriais.</td>
                     </tr>
 
@@ -824,7 +864,7 @@
                         <td>Municípios mapeados</td>
                         <td>824</td>
                         <td>Abrangência territorial</td>
-                        <td><span class="status-pill success">Mapeado</span></td>
+                        <td><span class="status-pill info">Aguardando integração</span></td>
                         <td>Municípios identificados nos dados, úteis para análises regionais, distribuição territorial e estudos populacionais.</td>
                     </tr>
                 </tbody>

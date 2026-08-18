@@ -1,3 +1,6 @@
 [submodule "inteligente"]
 	path = inteligente
 	url = https://github.com/Bonidia/InteliGente
+[submodule "base_guaraci"]
+	path = base_guaraci
+	url = https://github.com/autoaihub/guaraci.git
